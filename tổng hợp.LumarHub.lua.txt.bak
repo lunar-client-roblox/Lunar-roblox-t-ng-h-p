@@ -68,7 +68,7 @@ loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/indexeduu/BF-New
       AddButton(Tab1o, {
      Name = "Lunar nic gà",
     Callback = function()
-	  loadstring(game:HttpGet("https://raw.githubusercontent.com/lunar-client-roblox/B-n-hack-c-a-lunar/refs/heads/main/Lunar.lua.txt?token=GHSAT0AAAAAADD3WD6M2IVBTBHPERG5DCCQ2BEQ2UQ"))()
+	  loadstring(game:HttpGet("https://raw.githubusercontent.com/lunar-client-roblox/Lunar-roblox/refs/heads/main/Lunarhub.lua.txt.bak"))()
   end
   })
   
