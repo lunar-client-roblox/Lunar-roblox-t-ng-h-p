@@ -1,10 +1,12 @@
-         local Window = MakeWindow({
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua")))()
+
+       local Window = MakeWindow({
          Hub = {
          Title = "Lunar Client",
          Animation = "Youtube: Lunar Roblox"
          },
         Key = {
-        KeySystem = True,
+        KeySystem = false,
         Title = "Key System",
         Description = "",
         KeyLink = "",
@@ -42,21 +44,21 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))(Settings)
   end
   })
-  
-  AddButton(Tab1o, {
-     Name = "Vexzehub siêu múp",
+
+AddButton(Tab1o, {
+     Name = "VxezeHub siêu múp",
     Callback = function()
-	 loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Vxezehub/refs/heads/main/VxezeHubMain"))()
+	  loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Vxezehub/refs/heads/main/VxezeHubMain"))()
   end
   })
-  
-  AddButton(Tab1o, {
-     Name = "Aurorahb siêu múp",
+
+AddButton(Tab1o, {
+     Name = "AuroraHub siêu múp",
     Callback = function()
 	  loadstring(game:HttpGet("https://raw.githubusercontent.com/Jadelly261/BloxFruits/main/Aurora", true))()
   end
   })
-  
+
       AddButton(Tab1o, {
      Name = "vocado v3 siêu múp",
     Callback = function()
