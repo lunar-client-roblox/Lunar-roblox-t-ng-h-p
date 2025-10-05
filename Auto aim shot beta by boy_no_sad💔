@@ -1,0 +1,172 @@
+# auto_aim.gd
+# Godot 4.x — legal offline aim assist logic
+# Attach this to a CharacterBody3D or Node3D (e.g., your "Chance" character).
+# Targets (enemies) should be added to a group called "enemies".
+# Optional child nodes:
+#   - "Muzzle": where projectiles spawn.
+#   - "LoS_Ray": optional RayCast3D for line-of-sight check.
+
+extends CharacterBody3D
+
+# ----- CONFIGURABLE PARAMETERS -----
+@export_range(0.0, 200.0, 0.1) var aim_range: float = 40.0        # Max distance to lock target
+@export_range(0.0, 180.0, 0.1) var fov_deg: float = 80.0         # Field of View
+@export_range(0.0, 20.0, 0.01) var aim_smoothness: float = 6.0   # How smoothly to rotate
+@export_range(0.0, 200.0, 0.1) var projectile_speed: float = 60.0# Bullet speed (for prediction)
+@export var require_los: bool = true                             # Require clear line of sight
+@export var only_visible_when_aiming: bool = true                # Optional toggle
+
+@export_range(0.0, 5.0, 0.01) var fire_cooldown: float = 0.25    # Delay between shots
+
+@export_node_path NodePath var muzzle_path
+@export_node_path NodePath var ray_node_path
+@export var ProjectileScene: PackedScene                         # Optional projectile prefab
+
+var _target: Node3D = null
+var _time_since_fire = 0.0
+
+func _ready():
+    _time_since_fire = fire_cooldown
+    if not muzzle_path and has_node("Muzzle"):
+        muzzle_path = $"Muzzle".get_path()
+    if not ray_node_path and has_node("LoS_Ray"):
+        ray_node_path = $"LoS_Ray".get_path()
+
+func _physics_process(delta):
+    _time_since_fire += delta
+    _target = _find_best_target()
+    if _target:
+        var aim_point = _compute_lead_point(_target, global_transform.origin, projectile_speed)
+        _rotate_towards(aim_point, delta)
+        if _can_fire_at_point(aim_point):
+            _fire()
+    else:
+        # No target found — idle state
+        pass
+
+# ----- FIND THE BEST TARGET -----
+func _find_best_target() -> Node3D:
+    var best: Node3D = null
+    var best_score = INF
+    var origin = global_transform.origin
+    for enemy in get_tree().get_nodes_in_group("enemies"):
+        if not enemy is Node3D:
+            continue
+        var pos = enemy.global_transform.origin
+        var dir = pos - origin
+        var dist = dir.length()
+        if dist > aim_range:
+            continue
+        var forward = -global_transform.basis.z.normalized()
+        var angle_deg = rad2deg(acos(clamp(forward.dot(dir.normalized()), -1.0, 1.0)))
+        if angle_deg > fov_deg * 0.5:
+            continue
+        if require_los and not _has_line_of_sight(origin, pos):
+            continue
+        var score = dist + angle_deg * 0.1
+        if score < best_score:
+            best_score = score
+            best = enemy
+    return best
+
+# ----- LINE OF SIGHT CHECK -----
+func _has_line_of_sight(origin: Vector3, target_pos: Vector3) -> bool:
+    var space = get_world_3d().direct_space_state
+    var result = space.intersect_ray(origin, target_pos, [self], 0x7FFFFFFF, true, true)
+    if result.is_empty():
+        return true
+    var collider = result.get("collider")
+    if collider == null:
+        return true
+    if collider == _target or collider == _target.get_owner():
+        return true
+    return false
+
+# ----- TARGET LEAD PREDICTION -----
+func _compute_lead_point(target: Node3D, shooter_pos: Vector3, proj_speed: float) -> Vector3:
+    var target_pos = target.global_transform.origin
+    var target_vel = Vector3.ZERO
+    if target.has_variable("velocity"):
+        target_vel = target.velocity
+    elif target.has_method("get_velocity"):
+        target_vel = target.get_velocity()
+    elif "linear_velocity" in target:
+        target_vel = target.linear_velocity
+
+    if proj_speed <= 0.01 or target_vel == Vector3.ZERO:
+        return target_pos
+
+    var p = target_pos
+    var s = shooter_pos
+    var v = target_vel
+    var r = p - s
+    var a = v.dot(v) - proj_speed * proj_speed
+    var b = 2.0 * v.dot(r)
+    var c = r.dot(r)
+    var t = -1.0
+    if abs(a) < 0.0001:
+        if abs(b) > 0.0001:
+            t = -c / b
+    else:
+        var disc = b*b - 4.0*a*c
+        if disc >= 0.0:
+            var sqrt_d = sqrt(disc)
+            var t1 = (-b + sqrt_d) / (2.0*a)
+            var t2 = (-b - sqrt_d) / (2.0*a)
+            var cand = []
+            if t1 > 0.01: cand.append(t1)
+            if t2 > 0.01: cand.append(t2)
+            if cand.size() > 0:
+                t = min(cand)
+    if t <= 0.0:
+        return target_pos
+    return target_pos + v * t
+
+# ----- ROTATE TOWARD TARGET -----
+func _rotate_towards(point: Vector3, delta: float) -> void:
+    var origin = global_transform.origin
+    var dir = point - origin
+    dir.y = 0
+    if dir.length() < 0.001:
+        return
+    var desired_dir = dir.normalized()
+    var forward = -global_transform.basis.z
+    forward.y = 0
+    forward = forward.normalized()
+    var cross = forward.cross(desired_dir)
+    var dot = clamp(forward.dot(desired_dir), -1.0, 1.0)
+    var angle = atan2(cross.y, dot)
+    var max_step = aim_smoothness * delta
+    var step = clamp(angle, -max_step, max_step)
+    rotate_y(step)
+
+# ----- CAN WE FIRE -----
+func _can_fire_at_point(point: Vector3) -> bool:
+    if _time_since_fire < fire_cooldown:
+        return false
+    if require_los and not _has_line_of_sight(global_transform.origin, point):
+        return false
+    var forward = -global_transform.basis.z.normalized()
+    var to_point = (point - global_transform.origin).normalized()
+    var angle = rad2deg(acos(clamp(forward.dot(to_point), -1.0, 1.0)))
+    if angle > 10.0:
+        return false
+    return true
+
+# ----- FIRE PROJECTILE -----
+func _fire():
+    _time_since_fire = 0.0
+    if ProjectileScene and muzzle_path and has_node(muzzle_path):
+        var muzzle = get_node(muzzle_path) as Node3D
+        var proj = ProjectileScene.instantiate()
+        get_parent().add_child(proj)
+        var dir = -global_transform.basis.z.normalized()
+        proj.global_transform.origin = muzzle.global_transform.origin
+        if proj.has_method("init"):
+            proj.init(dir * projectile_speed)
+        elif "linear_velocity" in proj:
+            proj.linear_velocity = dir * projectile_speed
+        elif proj.has_variable("velocity"):
+            proj.velocity = dir * projectile_speed
+    else:
+        print_debug("FIRE: no projectile scene or muzzle defined.")
