@@ -1,0 +1,164 @@
+-- Forsaken Camera Aim Assist (UI + Dropdown for Mode)
+-- Made by ChatGPT
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+
+-- Settings
+local AimEnabled = false
+local AimMode = "Hard Lock" -- or "Smooth Assist"
+local IgnoredHPRange = {0, 131}
+local SmoothSpeed = 0.15 -- smaller = slower smooth
+
+-- Create ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+-- Main Frame
+local MainFrame = Instance.new("Frame")
+MainFrame.Parent = ScreenGui
+MainFrame.Size = UDim2.new(0, 220, 0, 160)
+MainFrame.Position = UDim2.new(0.5, -110, 0.7, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+MainFrame.BorderSizePixel = 0
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+-- Title
+local Title = Instance.new("TextLabel")
+Title.Parent = MainFrame
+Title.Size = UDim2.new(1, -30, 0, 30)
+Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Title.Text = "Forsaken Aim Assist"
+Title.TextColor3 = Color3.fromRGB(0, 255, 255)
+Title.Font = Enum.Font.SourceSansBold
+Title.TextSize = 20
+Title.TextXAlignment = Enum.TextXAlignment.Left
+
+-- Minimize Button
+local MinimizeBtn = Instance.new("TextButton")
+MinimizeBtn.Parent = MainFrame
+MinimizeBtn.Size = UDim2.new(0, 30, 0, 30)
+MinimizeBtn.Position = UDim2.new(1, -30, 0, 0)
+MinimizeBtn.Text = "-"
+MinimizeBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+MinimizeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeBtn.Font = Enum.Font.SourceSansBold
+MinimizeBtn.TextSize = 20
+
+-- Toggle Button
+local ToggleButton = Instance.new("TextButton")
+ToggleButton.Parent = MainFrame
+ToggleButton.Size = UDim2.new(1, -20, 0, 40)
+ToggleButton.Position = UDim2.new(0, 10, 0, 40)
+ToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+ToggleButton.Text = "Aim Assist: OFF"
+ToggleButton.TextColor3 = Color3.fromRGB(255, 50, 50)
+ToggleButton.Font = Enum.Font.SourceSansBold
+ToggleButton.TextSize = 18
+
+-- Dropdown Button
+local Dropdown = Instance.new("TextButton")
+Dropdown.Parent = MainFrame
+Dropdown.Size = UDim2.new(1, -20, 0, 30)
+Dropdown.Position = UDim2.new(0, 10, 0, 85)
+Dropdown.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Dropdown.Text = "Mode: " .. AimMode
+Dropdown.TextColor3 = Color3.fromRGB(200, 200, 200)
+Dropdown.Font = Enum.Font.SourceSansBold
+Dropdown.TextSize = 16
+
+-- Info Label
+local Info = Instance.new("TextLabel")
+Info.Parent = MainFrame
+Info.Size = UDim2.new(1, 0, 0, 20)
+Info.Position = UDim2.new(0, 0, 1, -20)
+Info.BackgroundTransparency = 1
+Info.Text = "Ignored HP: 0–131"
+Info.TextColor3 = Color3.fromRGB(200, 200, 200)
+Info.Font = Enum.Font.SourceSans
+Info.TextSize = 16
+
+-- Toggle Function
+ToggleButton.MouseButton1Click:Connect(function()
+    AimEnabled = not AimEnabled
+    if AimEnabled then
+        ToggleButton.Text = "Aim Assist: ON"
+        ToggleButton.TextColor3 = Color3.fromRGB(50, 255, 50)
+    else
+        ToggleButton.Text = "Aim Assist: OFF"
+        ToggleButton.TextColor3 = Color3.fromRGB(255, 50, 50)
+    end
+end)
+
+-- Dropdown Function (switch between Hard Lock and Smooth Assist)
+Dropdown.MouseButton1Click:Connect(function()
+    if AimMode == "Hard Lock" then
+        AimMode = "Smooth Assist"
+    else
+        AimMode = "Hard Lock"
+    end
+    Dropdown.Text = "Mode: " .. AimMode
+end)
+
+-- Minimize Function
+local Minimized = false
+MinimizeBtn.MouseButton1Click:Connect(function()
+    Minimized = not Minimized
+    if Minimized then
+        ToggleButton.Visible = false
+        Dropdown.Visible = false
+        Info.Visible = false
+        MainFrame.Size = UDim2.new(0, 220, 0, 30)
+        MinimizeBtn.Text = "+"
+    else
+        ToggleButton.Visible = true
+        Dropdown.Visible = true
+        Info.Visible = true
+        MainFrame.Size = UDim2.new(0, 220, 0, 160)
+        MinimizeBtn.Text = "-"
+    end
+end)
+
+-- Get nearest killer
+local function GetNearestKiller()
+    local nearest, dist = nil, math.huge
+    for _, plr in pairs(Players:GetPlayers()) do
+        if plr ~= LocalPlayer and plr.Character then
+            local hum = plr.Character:FindFirstChildOfClass("Humanoid")
+            local head = plr.Character:FindFirstChild("Head")
+            if hum and head and hum.Health > IgnoredHPRange[2] then
+                local pos, onScreen = workspace.CurrentCamera:WorldToViewportPoint(head.Position)
+                if onScreen then
+                    local mag = (Vector2.new(pos.X, pos.Y) - (workspace.CurrentCamera.ViewportSize/2)).Magnitude
+                    if mag < dist then
+                        dist = mag
+                        nearest = head
+                    end
+                end
+            end
+        end
+    end
+    return nearest
+end
+
+-- Camera Aim
+RunService.RenderStepped:Connect(function()
+    if AimEnabled then
+        local targetHead = GetNearestKiller()
+        if targetHead then
+            local cam = workspace.CurrentCamera
+            local camPos = cam.CFrame.Position
+
+            if AimMode == "Hard Lock" then
+                cam.CFrame = CFrame.new(camPos, targetHead.Position)
+            elseif AimMode == "Smooth Assist" then
+                local targetCF = CFrame.new(camPos, targetHead.Position)
+                cam.CFrame = cam.CFrame:Lerp(targetCF, SmoothSpeed)
+            end
+        end
+    end
+end)
