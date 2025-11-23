@@ -1,0 +1,4963 @@
+-- filename: 
+-- version: lua51
+-- line: [0, 0] id: 0
+repeat
+  task.wait()
+until game:IsLoaded()
+local r0_0 = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
+r0_0:AddTheme({
+  Name = "Dark",
+  Accent = "#18181b",
+  Dialog = "#18181b",
+  Outline = "#FFFFFF",
+  Text = "#FFFFFF",
+  Placeholder = "#999999",
+  Background = "#0e0e10",
+  Button = "#52525b",
+  Icon = "#a1a1aa",
+})
+r0_0:AddTheme({
+  Name = "Light",
+  Accent = "#f4f4f5",
+  Dialog = "#f4f4f5",
+  Outline = "#000000",
+  Text = "#000000",
+  Placeholder = "#666666",
+  Background = "#ffffff",
+  Button = "#e4e4e7",
+  Icon = "#52525b",
+})
+r0_0:AddTheme({
+  Name = "Gray",
+  Accent = "#374151",
+  Dialog = "#374151",
+  Outline = "#d1d5db",
+  Text = "#f9fafb",
+  Placeholder = "#9ca3af",
+  Background = "#1f2937",
+  Button = "#4b5563",
+  Icon = "#d1d5db",
+})
+r0_0:AddTheme({
+  Name = "Blue",
+  Accent = "#1e40af",
+  Dialog = "#1e3a8a",
+  Outline = "#93c5fd",
+  Text = "#f0f9ff",
+  Placeholder = "#60a5fa",
+  Background = "#1e293b",
+  Button = "#3b82f6",
+  Icon = "#93c5fd",
+})
+r0_0:AddTheme({
+  Name = "Green",
+  Accent = "#059669",
+  Dialog = "#047857",
+  Outline = "#6ee7b7",
+  Text = "#ecfdf5",
+  Placeholder = "#34d399",
+  Background = "#064e3b",
+  Button = "#10b981",
+  Icon = "#6ee7b7",
+})
+r0_0:AddTheme({
+  Name = "Purple",
+  Accent = "#7c3aed",
+  Dialog = "#6d28d9",
+  Outline = "#c4b5fd",
+  Text = "#faf5ff",
+  Placeholder = "#a78bfa",
+  Background = "#581c87",
+  Button = "#8b5cf6",
+  Icon = "#c4b5fd",
+})
+r0_0:SetNotificationLower(true)
+local r1_0 = {
+  "Dark",
+  "Light",
+  "Gray",
+  "Blue",
+  "Green",
+  "Purple"
+}
+local r2_0 = 1
+if not getgenv().TransparencyEnabled then
+  getgenv().TransparencyEnabled = false
+end
+game.StarterGui:SetCore("SendNotification", {
+  Title = "VexonHub",
+  Text = "Toggle Keybind: ( R )",
+  Duration = 30,
+  Icon = "rbxassetid://84519376661277",
+})
+loadstring(game:HttpGet("https://pastefy.app/ZQtMnR66/raw"))()
+local r3_0 = r0_0:CreateWindow({
+  Title = "VexonHub",
+  Icon = "zap",
+  Author = "The Strongest Battle Grounds",
+  Folder = "vexonhub",
+  Size = UDim2.fromOffset(500, 350),
+  Transparent = getgenv().TransparencyEnabled,
+  Theme = "Dark",
+  Resizable = true,
+  SideBarWidth = 150,
+  BackgroundImageTransparency = 0.8,
+  HideSearchBar = false,
+  ScrollBarEnabled = true,
+  User = {
+    Enabled = true,
+    Anonymous = false,
+    Callback = function()
+      -- line: [0, 0] id: 215
+      r2_0 = r2_0 + 1
+      if #r1_0 < r2_0 then
+        r2_0 = 1
+      end
+      local r0_215 = r1_0[r2_0]
+      r0_0:SetTheme(r0_215)
+      r0_0:Notify({
+        Title = "Theme Changed",
+        Content = "Switched to " .. r0_215 .. " theme!",
+        Duration = 2,
+        Icon = "palette",
+      })
+      print("Switched to " .. r0_215 .. " theme")
+    end,
+  },
+})
+pcall(function()
+  -- line: [0, 0] id: 225
+  r3_0:CreateTopbarButton("TransparencyToggle", "eye", function()
+    -- line: [0, 0] id: 226
+    if getgenv().TransparencyEnabled then
+      getgenv().TransparencyEnabled = false
+      pcall(function()
+        -- line: [0, 0] id: 227
+        r3_0:ToggleTransparency(false)
+      end)
+      r0_0:Notify({
+        Title = "Transparency",
+        Content = "Transparency disabled",
+        Duration = 3,
+        Icon = "eye",
+      })
+      print("Transparency = false")
+    else
+      getgenv().TransparencyEnabled = true
+      pcall(function()
+        -- line: [0, 0] id: 228
+        r3_0:ToggleTransparency(true)
+      end)
+      r0_0:Notify({
+        Title = "Transparency",
+        Content = "Transparency enabled",
+        Duration = 3,
+        Icon = "eye-off",
+      })
+      print(" Transparency = true")
+    end
+    print("Debug - Current Transparency state:", getgenv().TransparencyEnabled)
+  end, 990)
+end)
+loadstring(game:HttpGet("https://pastefy.app/hcVkWhQF/raw"))()
+r3_0:EditOpenButton({
+  Title = "VexonHub",
+  CornerRadius = UDim.new(0, 6),
+  StrokeThickness = 2,
+  Color = ColorSequence.new(Color3.fromRGB(30, 30, 30), Color3.fromRGB(255, 255, 255)),
+  Draggable = true,
+})
+r3_0.ToggleKey = Enum.KeyCode.R
+local r4_0 = {
+  Main = r3_0:Tab({
+    Title = "Main",
+    Icon = "eye",
+    Desc = "VexonHub",
+  }),
+  Misc = r3_0:Tab({
+    Title = "Misc",
+    Icon = "sparkles",
+    Desc = "VexonHub",
+  }),
+  Fight = r3_0:Tab({
+    Title = "Fighting",
+    Icon = "sword",
+    Desc = "VexonHub",
+  }),
+  Tech = r3_0:Tab({
+    Title = "Tech",
+    Icon = "wrench",
+    Desc = "VexonHub",
+  }),
+  Lag = r3_0:Tab({
+    Title = "Lag-Ping",
+    Icon = "leaf",
+    Desc = "VexonHub",
+  }),
+  Anim = r3_0:Tab({
+    Title = "Animations",
+    Icon = "package",
+    Desc = "VexonHub",
+  }),
+  Place = r3_0:Tab({
+    Title = "Places",
+    Icon = "map",
+    Desc = "VexonHub",
+  }),
+  Moveset = r3_0:Tab({
+    Title = "Moveset",
+    Icon = "star",
+    Desc = "VexonHub",
+  }),
+  Fling = r3_0:Tab({
+    Title = "Fling",
+    Icon = "user",
+    Desc = "VexonHub",
+  }),
+  Info = r3_0:Tab({
+    Title = "Information",
+    Icon = "badge-info",
+    Desc = "VexonHub",
+  }),
+}
+r3_0:SelectTab(10)
+r4_0.Main:Button({
+  Title = "Copy Discord Link (join for more info)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 33
+    setclipboard("https://discord.gg/mdJKdwbKjE")
+  end,
+})
+r4_0.Main:Section({
+  Title = "Autos",
+  Icon = "star",
+})
+local r5_0 = game:GetService("Players")
+local r6_0 = game:GetService("RunService")
+local r7_0 = game:GetService("VirtualInputManager")
+local r8_0 = game:GetService("UserInputService")
+local r9_0 = game:GetService("ReplicatedStorage")
+local r10_0 = game:GetService("VirtualUser")
+local r11_0 = r5_0.LocalPlayer
+local r12_0 = r11_0.Character or r11_0.CharacterAdded:Wait()
+local r13_0 = r12_0:WaitForChild("Humanoid")
+local r14_0 = r13_0:FindFirstChildOfClass("Animator")
+local r15_0 = game:GetService("Players").LocalPlayer
+local r16_0 = Vector3.new(150, -495, 30)
+local r17_0 = false
+local r18_0 = false
+local r19_0 = false
+local r20_0 = false
+local r21_0 = false
+local r22_0 = false
+local r23_0 = false
+local r24_0 = false
+local r25_0 = false
+local r26_0 = false
+local r27_0 = false
+local r28_0 = 9
+local r29_0 = 200
+local r30_0 = nil
+local r31_0 = nil
+local r32_0 = nil
+local r33_0 = nil
+local r34_0 = nil
+local r35_0 = {}
+local r36_0 = {}
+local r37_0 = "rbxassetid://12296113986"
+local r38_0 = {
+  ["136370737633649"] = true,
+  ["18182425133"] = true,
+  ["18236605028"] = true,
+}
+local r39_0 = {
+  ["rbxassetid://17325537719"] = true,
+  ["rbxassetid://10469643643"] = true,
+  ["rbxassetid://13294471966"] = true,
+  ["rbxassetid://13295936866"] = true,
+  ["rbxassetid://13378708199"] = true,
+  ["rbxassetid://14136436157"] = true,
+  ["rbxassetid://15162694192"] = true,
+  ["rbxassetid://16552234590"] = true,
+  ["rbxassetid://17889290569"] = true,
+}
+local r40_0 = {
+  "Pathetic",
+  "Nice try, loser",
+  "Git gud",
+  "You\'re a noob",
+  "Did you even try?",
+  "Keep dying, it\'s amusing",
+  "Too easy",
+  "Better luck next time",
+  "That was embarrassing",
+  "You\'re just feeding my kills",
+  "Can\'t handle the pressure?",
+  "You call that playing?",
+  "LOL, what a scrub",
+  "Go cry to your mommy",
+  "Just uninstall.",
+  "I\'m not even trying.",
+  "Get rekt, scrub",
+  "You\'re a joke",
+  "Just stop trying.",
+  "Noob alert",
+  "Stay in the kiddie pool",
+  "Did someone forget their skills?",
+  "Do you need a tutorial?",
+  "You make this too easy.",
+  "You\'re not even worth my time.",
+  "I\'ve seen toddlers play better.",
+  "You\'re a respawn machine",
+  "You\'re like a training dummy.",
+  "Did you pay to be this bad?",
+  "Even the NPCs play better than you.",
+  "You must be allergic to victory.",
+  "Your gameplay is a tutorial on how not to play.",
+  "I bet you\'re proud of that death streak.",
+  "You\'re the MVP of feeding kills.",
+  "You\'re like a pinata... full of free kills.",
+  "You\'re like a legend... in dying.",
+  "Do you think dying is a tactic?",
+  "What The Sigma.",
+  "Ez Kill LOL",
+  "hehe cry more"
+}
+local function r41_0(r0_259)
+  -- line: [0, 0] id: 259
+  r12_0 = r0_259
+  r13_0 = r12_0:WaitForChild("Humanoid")
+  r14_0 = r13_0:FindFirstChildOfClass("Animator")
+end
+local r42_0 = Vector3.new(150, -495, 30)
+local r43_0 = false
+local r44_0 = false
+local r45_0 = false
+local r46_0 = {
+  {
+    id = "12273188754",
+    timewait = 0.5,
+  },
+  {
+    id = "12296113986",
+    timewait = 0.5,
+  },
+  {
+    id = "15145462680",
+    timewait = 1.5,
+  },
+  {
+    id = "16139108718",
+    timewait = 0.1,
+  },
+  {
+    id = "17889080495",
+    timewait = 0,
+  },
+  {
+    id = "14705929107",
+    timewait = 1.3,
+  },
+  {
+    id = "14701242661",
+    timewait = 3,
+  },
+  {
+    id = "14920779925",
+    timewait = 0.2,
+  },
+  {
+    id = "16062712948",
+    timewait = 1,
+  }
+}
+local function r47_0(r0_134)
+  -- line: [0, 0] id: 134
+  r12_0 = r0_134
+  r13_0 = r12_0:WaitForChild("Humanoid")
+  r14_0 = r13_0:FindFirstChildOfClass("Animator")
+  if r14_0 then
+    r14_0.AnimationPlayed:Connect(onAnimationPlayed_AutoVoid)
+  end
+end
+r11_0.CharacterAdded:Connect(r47_0)
+workspace.FallenPartsDestroyHeight = -math.huge
+r4_0.Main:Dropdown({
+  Title = "Select Place",
+  Desc = "Where Do You Want It To Auto Place To?",
+  [r5_0] = {
+    "Map",
+    "Pixel",
+    "Void",
+    "Darkness",
+    "Mountain",
+    "Counter",
+    "Atomic Base",
+    "Atomic Base Up",
+    "Atomic Slash",
+    "Prison"
+  },
+  Value = "Void",
+  Multi = false,
+  Callback = function(r0_333)
+    -- line: [0, 0] id: 333
+    if r0_333 == "Map" then
+      r42_0 = Vector3.new(150, 505, 30)
+    elseif r0_333 == "Pixel" then
+      r42_0 = Vector3.new(30000000, 30000000, 30000000)
+    elseif r0_333 == "Void" then
+      r42_0 = Vector3.new(150, -495, 30)
+    elseif r0_333 == "Darkness" then
+      r42_0 = Vector3.new(0, 900000000002, 0)
+    elseif r0_333 == "Mountain" then
+      r42_0 = Vector3.new(155.577392578125, 628.742431640625, -447.93841552734375)
+    elseif r0_333 == "Counter" then
+      r42_0 = Vector3.new(-68, 29, 20346)
+    elseif r0_333 == "Atomic Base" then
+      r42_0 = Vector3.new(1063, 30, 23006)
+    elseif r0_333 == "Atomic Base Up" then
+      r42_0 = Vector3.new(1063, 405, 23006)
+    elseif r0_333 == "Atomic Slash" then
+      r42_0 = Vector3.new(1063, 131, 23006)
+    elseif r0_333 == "Prison" then
+      r42_0 = Vector3.new(438, 439, -376)
+    end
+  end,
+})
+local r50_0 = "Toggle"
+r50_0 = {
+  Title = "Auto Void/Place",
+  Value = false,
+  Callback = function(r0_331)
+    -- line: [0, 0] id: 331
+    r43_0 = r0_331
+  end,
+}
+r4_0.Main:[r50_0](r50_0)
+r50_0 = "Toggle"
+r50_0 = {
+  Title = "Tp Back Old Pos",
+  Value = false,
+  Callback = function(r0_100)
+    -- line: [0, 0] id: 100
+    r45_0 = r0_100
+  end,
+}
+r4_0.Main:[r50_0](r50_0)
+function onAnimationPlayed_AutoVoid(r0_105)
+  -- line: [0, 0] id: 105
+  if not r43_0 or r44_0 then
+    return 
+  end
+  local r1_105 = r0_105.Animation
+  if not r1_105 then
+    return 
+  end
+  for r5_105, r6_105 in ipairs(r46_0) do
+    if r1_105.AnimationId == "rbxassetid://" .. r6_105.id then
+      r44_0 = true
+      if not r12_0 or not r12_0.Parent or not r13_0 or r13_0.Health <= 0 then
+        r44_0 = false
+        return 
+      end
+      local r7_105 = r12_0:FindFirstChild("HumanoidRootPart")
+      if not r7_105 then
+        r44_0 = false
+        return 
+      end
+      local r8_105 = r7_105.CFrame
+      task.wait(r6_105.timewait)
+      if r12_0 and r12_0.Parent and r43_0 and 0 < r13_0.Health then
+        r7_105.CFrame = CFrame.new(r42_0)
+        r0_105.Stopped:Wait()
+        if r12_0 and r12_0.Parent and r43_0 and r45_0 and 0 < r13_0.Health then
+          r7_105.CFrame = r8_105
+        end
+      end
+      r44_0 = false
+      break
+    end
+  end
+end
+if r14_0 then
+  r14_0.AnimationPlayed:Connect(onAnimationPlayed_AutoVoid)
+end
+r50_0 = "Toggle"
+r50_0 = {
+  Title = "Auto Whirlwind Dunk",
+  Value = false,
+  Callback = function(r0_174)
+    -- line: [0, 0] id: 174
+    r20_0 = r0_174
+  end,
+}
+r4_0.Main:[r50_0](r50_0)
+local function r48_0(r0_250)
+  -- line: [0, 0] id: 250
+  if r20_0 and r0_250.Animation.AnimationId == r37_0 then
+    task.wait(1.2)
+    local r1_250 = r12_0:FindFirstChild("HumanoidRootPart")
+    if r1_250 then
+      local r2_250 = r1_250.Position
+      r1_250.CFrame = CFrame.new(r2_250.X, r2_250.Y + 100, r2_250.Z)
+    end
+  end
+end
+local function r49_0()
+  -- line: [0, 0] id: 20
+  r7_0:SendKeyEvent(true, Enum.KeyCode.Q, false, game)
+  task.wait(0.1)
+  r7_0:SendKeyEvent(false, Enum.KeyCode.Q, false, game)
+end
+function r50_0(r0_54, r1_54)
+  -- line: [0, 0] id: 54
+  if not r21_0 or not r0_54.Animation then
+    return 
+  end
+  if r39_0[r0_54.Animation.AnimationId] then
+    local r2_54 = r1_54:FindFirstChild("HumanoidRootPart")
+    if r2_54 then
+      local r3_54 = r2_54.CFrame
+      local r4_54 = tick()
+      local r5_54 = nil
+      r5_54 = r6_0.Heartbeat:Connect(function()
+        -- line: [0, 0] id: 55
+        if not r21_0 or 0.3 <= tick() - r4_54 then
+          if r2_54 and r2_54.Parent then
+            r2_54.CFrame = r3_54
+          end
+          r5_54:Disconnect()
+        elseif r2_54 and r2_54.Parent then
+          r2_54.CFrame = r3_54 * CFrame.Angles(math.rad(-25), 0, 0)
+        end
+      end)
+      -- close: r3_54
+    end
+    -- close: r2_54
+  end
+end
+local function r51_0(r0_86)
+  -- line: [0, 0] id: 86
+  if r30_0 then
+    r30_0:Disconnect()
+  end
+  if r31_0 then
+    r31_0:Disconnect()
+  end
+  r30_0 = r0_86.DescendantAdded:Connect(function(r0_88)
+    -- line: [0, 0] id: 88
+    if r0_88:IsA("ObjectValue") and r0_88.Name:lower() == "wallcombo" and r21_0 then
+      local r1_88 = tick()
+      while true do
+        r49_0()
+        task.wait()
+        if r0_88.Parent then
+          local r2_88 = r0_88.Parent
+          if r2_88 == r0_86 then
+            r2_88 = tick() - r1_88
+            if (r0_88:GetAttribute("DeleteMe") or 0.6) <= r2_88 then
+              break
+            end
+          else
+            break
+          end
+        else
+          break
+        end
+      end
+    end
+  end)
+  local r1_86 = r0_86:FindFirstChildOfClass("Humanoid")
+  if r1_86 then
+    r31_0 = r1_86.AnimationPlayed:Connect(function(r0_87)
+      -- line: [0, 0] id: 87
+      r50_0(r0_87, r0_86)
+    end)
+  end
+end
+local r54_0 = "Toggle"
+r54_0 = {
+  Title = "Auto WallCombo + WallCombo Everywhere",
+  Value = false,
+  Callback = function(r0_214)
+    -- line: [0, 0] id: 214
+    r21_0 = r0_214
+    if r0_214 then
+      if r11_0.Character then
+        r51_0(r11_0.Character)
+      end
+    else
+      if r30_0 then
+        r30_0:Disconnect()
+      end
+      if r31_0 then
+        r31_0:Disconnect()
+      end
+    end
+  end,
+}
+r4_0.Main:[r54_0](r54_0)
+r4_0.Main:Section({
+  Title = "Antis",
+  Icon = "settings",
+})
+r54_0 = "Toggle"
+r54_0 = {
+  Title = "Anti Invisibility",
+  Value = false,
+  Callback = function(r0_310)
+    -- line: [0, 0] id: 310
+    r22_0 = r0_310
+    if not r0_310 then
+      r35_0 = {}
+    end
+  end,
+}
+r4_0.Main:[r54_0](r54_0)
+r6_0.RenderStepped:Connect(function()
+  -- line: [0, 0] id: 205
+  if not r22_0 then
+    return 
+  end
+  for r3_205, r4_205 in ipairs(r5_0:GetPlayers()) do
+    if r4_205 ~= r11_0 and r4_205.Character then
+      local r5_205 = r4_205.Character:FindFirstChildOfClass("Humanoid")
+      local r6_205 = r5_205 and r5_205:FindFirstChildOfClass("Animator")
+      if r6_205 then
+        for r10_205, r11_205 in ipairs(r6_205:GetPlayingAnimationTracks()) do
+          local r12_205 = r11_205.Animation and r11_205.Animation.AnimationId:gsub("rbxassetid://", "")
+          if r12_205 and r38_0[r12_205] then
+            r11_205:Stop()
+          end
+        end
+      end
+    end
+  end
+end)
+local r52_0 = "rbxassetid://1234567890"
+local r53_0 = false
+function r54_0()
+  -- line: [0, 0] id: 304
+  r53_0 = true
+  task.spawn(function()
+    -- line: [0, 0] id: 305
+    local r0_305 = false
+    local r1_305 = nil
+    local r2_305 = Vector3.new(1000, -499, 1000)
+    local r3_305 = workspace.CurrentCamera
+    while r53_0 do
+      task.wait()
+      local r4_305 = game.Players.LocalPlayer.Character
+      if r4_305 and r4_305:FindFirstChild("HumanoidRootPart") then
+        local r5_305 = r4_305:FindFirstChildOfClass("Animator")
+        if r5_305 then
+          for r9_305, r10_305 in pairs(r5_305:GetPlayingAnimationTracks()) do
+            if r10_305.Animation.AnimationId == r52_0 and not r0_305 then
+              task.wait(0.5)
+              r0_305 = true
+              r1_305 = r4_305.HumanoidRootPart.Position
+              r10_305.Stopped:Connect(function()
+                -- line: [0, 0] id: 306
+                r0_305 = false
+              end)
+              repeat
+                task.wait()
+                r4_305.HumanoidRootPart.CFrame = CFrame.new(r2_305)
+                task.wait(4)
+                r4_305.HumanoidRootPart.CFrame = CFrame.new(r1_305)
+                task.wait(0.1)
+              until not r0_305
+              r3_305.CameraType = Enum.CameraType.Custom
+              game.Players.LocalPlayer.CameraMode = Enum.CameraMode.Classic
+            end
+          end
+        end
+      end
+    end
+  end)
+end
+local function r55_0()
+  -- line: [0, 0] id: 16
+  r53_0 = false
+end
+local r58_0 = "Toggle"
+r58_0 = {
+  Title = "Anti Death Counter",
+  Value = false,
+  Callback = function(r0_265)
+    -- line: [0, 0] id: 265
+    if r0_265 then
+      r54_0()
+    else
+      r55_0()
+    end
+  end,
+}
+r4_0.Main:[r58_0](r58_0)
+r58_0 = "Toggle"
+r58_0 = {
+  Title = "Anti-AFK",
+  Value = false,
+  Callback = function(r0_132)
+    -- line: [0, 0] id: 132
+    if r0_132 then
+      if r32_0 then
+        r32_0:Disconnect()
+      end
+      r32_0 = r11_0.Idled:Connect(function()
+        -- line: [0, 0] id: 133
+        r10_0:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+        task.wait(10)
+        r10_0:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+      end)
+    elseif r32_0 then
+      r32_0:Disconnect()
+      r32_0 = nil
+    end
+  end,
+}
+r4_0.Main:[r58_0](r58_0)
+r4_0.Main:Section({
+  Title = "OP",
+  Icon = "eye",
+})
+r4_0.Main:Button({
+  Title = "VexonHub Mini",
+  Desc = "First version of the VexonHub but rly usefull",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 58
+    loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/187a02764b1ad1a4"))()
+  end,
+})
+r4_0.Main:Button({
+  Title = "Free Private Server",
+  Desc = "you can farm kills in this Private server when you invite your frends",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 143
+    loadstring(game:HttpGet("https://pastefy.app/JYJEBr16/raw"))()
+  end,
+})
+r58_0 = "Toggle"
+r58_0 = {
+  Title = "No Dash Cool Down",
+  Value = false,
+  Callback = function(r0_10)
+    -- line: [0, 0] id: 10
+    local r1_10 = workspace
+    local r3_10 = "EffectAffects"
+    local r4_10 = nil	-- notice: implicit variable refs by block#[3]
+    if r0_10 then
+      r4_10 = 1
+      if not r4_10 then
+        ::label_8::
+        r4_10 = 0
+      end
+    else
+      goto label_8	-- block#2 is visited secondly
+    end
+    r1_10:SetAttribute(r3_10, r4_10)
+    workspace:SetAttribute("NoDashCooldown", r0_10)
+  end,
+}
+r4_0.Main:[r58_0](r58_0)
+local r56_0 = game:GetService("Players")
+local r57_0 = game:GetService("RunService")
+r58_0 = r56_0.LocalPlayer
+local r59_0 = r58_0.Character or r58_0.CharacterAdded:Wait()
+local r60_0 = r59_0:WaitForChild("Humanoid")
+local r61_0 = r60_0:FindFirstChildOfClass("Animator")
+local r62_0 = "rbxassetid://136370737633649"
+local r63_0 = "rbxassetid://136370737633649"
+local r64_0 = 4.56
+local r65_0 = 0
+local r66_0 = nil
+local r67_0 = false
+local function r68_0(r0_176)
+  -- line: [0, 0] id: 176
+  if r59_0 then
+    for r5_176, r6_176 in ipairs({
+      "Head",
+      "Torso",
+      "Left Arm",
+      "Right Arm",
+      "Left Leg",
+      "Right Leg"
+    }) do
+      local r7_176 = r59_0:FindFirstChild(r6_176)
+      if r7_176 and r7_176:IsA("BasePart") then
+        r7_176.Transparency = r0_176
+      end
+    end
+  end
+end
+local function r69_0()
+  -- line: [0, 0] id: 37
+  if not r66_0 or not r66_0.IsPlaying then
+    local r0_37 = Instance.new("Animation")
+    r0_37.AnimationId = r63_0
+    r66_0 = r61_0:LoadAnimation(r0_37)
+    r66_0:Play()
+    r66_0.TimePosition = r64_0
+    r66_0:AdjustSpeed(r65_0)
+  end
+end
+local function r70_0()
+  -- line: [0, 0] id: 66
+  if r66_0 and r66_0.IsPlaying then
+    r66_0:Stop()
+    r66_0 = nil
+  end
+end
+local r73_0 = "Toggle"
+r73_0 = {
+  Title = "Invisiblity",
+  Value = false,
+  Callback = function(r0_50)
+    -- line: [0, 0] id: 50
+    r67_0 = r0_50
+    if r67_0 then
+      r68_0(0.5)
+    else
+      r68_0(0)
+      r70_0()
+    end
+  end,
+}
+r4_0.Main:[r73_0](r73_0)
+r57_0.RenderStepped:Connect(function()
+  -- line: [0, 0] id: 136
+  if r67_0 and r66_0 and r66_0.IsPlaying then
+    r70_0()
+  end
+end)
+r57_0.Heartbeat:Connect(function()
+  -- line: [0, 0] id: 144
+  if r67_0 then
+    r69_0()
+  end
+end)
+r58_0.CharacterAdded:Connect(function(r0_141)
+  -- line: [0, 0] id: 141
+  r59_0 = r0_141
+  r60_0 = r59_0:WaitForChild("Humanoid")
+  r61_0 = r60_0:FindFirstChildOfClass("Animator")
+  r60_0.Died:Connect(function()
+    -- line: [0, 0] id: 142
+    if r67_0 then
+      r70_0()
+    end
+  end)
+  if r67_0 then
+    r68_0(0.5)
+    r69_0()
+  end
+end)
+r4_0.Main:Section({
+  Title = "ESP",
+  Icon = "package",
+})
+local function r72_0()
+  -- line: [0, 0] id: 114
+  for r3_114, r4_114 in pairs(r56_0:GetPlayers()) do
+    if r4_114.Character and r4_114.Character:FindFirstChild("Counter") and not r4_114:FindFirstChild("SkullBillboard") then
+      local r5_114 = r4_114.Character:FindFirstChild("Head")
+      if r5_114 then
+        local r6_114 = Instance.new("BillboardGui", r5_114)
+        r6_114.Size = UDim2.new(5, 0, 5, 0)
+        r6_114.Adornee = r5_114
+        r6_114.AlwaysOnTop = true
+        local r7_114 = Instance.new("TextLabel", r6_114)
+        r7_114.Size = UDim2.new(1, 0, 1, 0)
+        r7_114.Text = "ï¿½ï¿½ï¿½"
+        r7_114.TextSize = 50
+        r7_114.BackgroundTransparency = 1
+        r7_114.TextColor3 = Color3.fromRGB(200, 200, 200)
+        local r8_114 = Instance.new("ObjectValue", r4_114)
+        r8_114.Name = "SkullBillboard"
+        r8_114.Value = r6_114
+      end
+    elseif r4_114:FindFirstChild("SkullBillboard") then
+      r4_114.SkullBillboard.Value:Destroy()
+      r4_114.SkullBillboard:Destroy()
+    end
+  end
+end
+local r75_0 = "Toggle"
+r75_0 = {
+  Title = "Esp Death Counter",
+  Value = false,
+  Callback = function(r0_279)
+    -- line: [0, 0] id: 279
+    r23_0 = r0_279
+    if r0_279 then
+      task.spawn(function()
+        -- line: [0, 0] id: 280
+        while r23_0 do
+          r72_0()
+          task.wait(1)
+        end
+      end)
+    end
+  end,
+}
+r4_0.Main:[r75_0](r75_0)
+function r73_0(r0_69, r1_69)
+  -- line: [0, 0] id: 69
+  if not r24_0 then
+    return 
+  end
+  local r2_69 = r0_69:FindFirstChild("Head")
+  if not r2_69 or r2_69:FindFirstChild("UltimateTag") then
+    return 
+  end
+  local r3_69 = Instance.new("BillboardGui", r2_69)
+  r3_69.Name = "UltimateTag"
+  r3_69.Size = UDim2.new(0, 150, 0, 70)
+  r3_69.StudsOffset = Vector3.new(0, 4, 0)
+  r3_69.AlwaysOnTop = true
+  r3_69.Adornee = r2_69
+  local r4_69 = Instance.new("TextLabel", r3_69)
+  r4_69.Size = UDim2.new(1, 0, 1, 0)
+  r4_69.BackgroundTransparency = 0.8
+  r4_69.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+  r4_69.TextColor3 = Color3.fromRGB(255, 255, 0)
+  r4_69.TextScaled = true
+  r4_69.Font = Enum.Font.FredokaOne
+  r4_69.TextStrokeTransparency = 0.5
+  r4_69.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+  local function r5_69()
+    -- line: [0, 0] id: 70
+    local r0_70 = r1_69:GetAttribute("Ultimate")
+    local r1_70 = r4_69
+    local r2_70 = nil	-- notice: implicit variable refs by block#[3]
+    if r0_70 then
+      r2_70 = "ULT: " .. tostring(math.floor(r0_70))
+      if not r2_70 then
+        ::label_17::
+        r2_70 = "ULT: N/A"
+      end
+    else
+      goto label_17	-- block#2 is visited secondly
+    end
+    r1_70.Text = r2_70
+  end
+  r5_69()
+  r1_69:GetAttributeChangedSignal("Ultimate"):Connect(r5_69)
+end
+local function r74_0(r0_146)
+  -- line: [0, 0] id: 146
+  r0_146.CharacterAdded:Connect(function(r0_147)
+    -- line: [0, 0] id: 147
+    task.wait(1)
+    if r0_147 then
+      r73_0(r0_147, r0_146)
+    end
+  end)
+  if r0_146.Character then
+    r73_0(r0_146.Character, r0_146)
+  end
+end
+local r77_0 = "Toggle"
+r77_0 = {
+  Title = "Esp Ult Bar",
+  Value = false,
+  Callback = function(r0_92)
+    -- line: [0, 0] id: 92
+    r24_0 = r0_92
+    for r4_92, r5_92 in pairs(r56_0:GetPlayers()) do
+      if r5_92.Character then
+        if r0_92 then
+          r73_0(r5_92.Character, r5_92)
+        else
+          local r6_92 = r5_92.Character:FindFirstChild("Head") and r5_92.Character.Head:FindFirstChild("UltimateTag")
+          if r6_92 then
+            r6_92:Destroy()
+          end
+        end
+      end
+    end
+  end,
+}
+r4_0.Main:[r77_0](r77_0)
+function r75_0(r0_266, r1_266)
+  -- line: [0, 0] id: 266
+  if not r25_0 then
+    return 
+  end
+  local r2_266 = r1_266:WaitForChild("Humanoid")
+  local r3_266 = r1_266:WaitForChild("Head")
+  local r4_266 = Drawing.new("Text")
+  r4_266.Visible = false
+  r4_266.Center = true
+  r4_266.Outline = true
+  r4_266.Font = 3
+  r4_266.Size = 18
+  r4_266.Color = Color3.fromRGB(255, 255, 255)
+  local function r5_266()
+    -- line: [0, 0] id: 270
+    local r0_270 = math.floor(r0_266:GetAttribute("Ping") or 0)
+    local r1_270 = r0_266:GetAttribute("Mobile")
+    if r1_270 then
+      r1_270 = "Mobile" or "PC"
+    else
+      goto label_19	-- block#4 is visited secondly
+    end
+    local r2_270 = workspace.Live:FindFirstChild(r0_266.Name)
+    if r2_270 then
+      r2_270 = workspace.Live[r0_266.Name]:GetAttribute("CurrentStreak") or 0
+    else
+      goto label_38	-- block#7 is visited secondly
+    end
+    return "[ " .. r0_266.Name .. " | Ping: " .. tostring(r0_270) .. " | " .. r1_270 .. " | Streak: " .. tostring(r2_270) .. " ]"
+  end
+  local r6_266 = {}
+  local function r7_266()
+    -- line: [0, 0] id: 268
+    r4_266:Remove()
+    for r3_268, r4_268 in ipairs(r6_266) do
+      r4_268:Disconnect()
+    end
+    r36_0[r0_266] = nil
+  end
+  table.insert(r6_266, r1_266.AncestryChanged:Connect(function(r0_267, r1_267)
+    -- line: [0, 0] id: 267
+    if not r1_267 then
+      r7_266()
+    end
+  end))
+  table.insert(r6_266, r2_266.Died:Connect(r7_266))
+  table.insert(r6_266, r57_0.RenderStepped:Connect(function()
+    -- line: [0, 0] id: 269
+    if not r25_0 or not r3_266 or not r3_266.Parent then
+      r7_266()
+      return 
+    end
+    local r0_269, r1_269 = workspace.CurrentCamera:WorldToViewportPoint(r3_266.Position)
+    if r1_269 then
+      r4_266.Position = Vector2.new(r0_269.X, r0_269.Y - 27)
+      r4_266.Text = r5_266()
+      r4_266.Visible = true
+    else
+      r4_266.Visible = false
+    end
+  end))
+  r36_0[r0_266] = {
+    r7_266
+  }
+end
+local function r76_0()
+  -- line: [0, 0] id: 17
+  for r3_17, r4_17 in pairs(r36_0) do
+    if r4_17[1] then
+      r4_17[1]()
+    end
+  end
+  r36_0 = {}
+end
+function r77_0(r0_119)
+  -- line: [0, 0] id: 119
+  if r0_119 ~= r11_0 then
+    if r0_119.Character then
+      r75_0(r0_119, r0_119.Character)
+    end
+    r0_119.CharacterAdded:Connect(function(r0_120)
+      -- line: [0, 0] id: 120
+      r75_0(r0_119, r0_120)
+    end)
+  end
+end
+local r80_0 = "Toggle"
+r80_0 = {
+  Title = "ESP Everyone",
+  Value = false,
+  Callback = function(r0_38)
+    -- line: [0, 0] id: 38
+    r25_0 = r0_38
+    if r25_0 then
+      for r4_38, r5_38 in pairs(r56_0:GetPlayers()) do
+        r77_0(r5_38)
+      end
+    else
+      r76_0()
+    end
+  end,
+}
+r4_0.Main:[r80_0](r80_0)
+r4_0.Main:Section({
+  Title = "Movement",
+  Icon = "settings",
+})
+local function r78_0(r0_193)
+  -- line: [0, 0] id: 193
+  r26_0 = r0_193
+  getgenv().WalkspeedBypass = r26_0
+  if r0_193 then
+    task.spawn(function()
+      -- line: [0, 0] id: 194
+      while getgenv().WalkspeedBypass do
+        local r0_194 = r59_0
+        if r0_194 then
+          r0_194 = r59_0.Parent
+          if r0_194 then
+            r0_194 = r59_0:FindFirstChildOfClass("Humanoid")
+            if r0_194 and 0 < r0_194.MoveDirection.Magnitude then
+              r59_0:TranslateBy(r0_194.MoveDirection * r28_0 * r57_0.Heartbeat:Wait() * 7)
+            end
+            task.wait()
+          else
+            break
+          end
+        else
+          break
+        end
+      end
+    end)
+  end
+end
+local r81_0 = "Toggle"
+r81_0 = {
+  Title = "Speed (V Key On/Off)",
+  Value = false,
+  Callback = r78_0,
+}
+r4_0.Main:[r81_0](r81_0)
+r81_0 = "Slider"
+r81_0 = {
+  Title = "Speed Boost Value",
+  Value = {
+    Min = 1,
+    Max = 100,
+    Default = 9,
+  },
+  Callback = function(r0_303)
+    -- line: [0, 0] id: 303
+    r28_0 = r0_303
+  end,
+}
+r4_0.Main:[r81_0](r81_0)
+r8_0.InputBegan:Connect(function(r0_24, r1_24)
+  -- line: [0, 0] id: 24
+  if r0_24.KeyCode == Enum.KeyCode.V and not r1_24 then
+    r78_0(not r26_0)
+  end
+end)
+r81_0 = "Toggle"
+r81_0 = {
+  Title = "Jump",
+  Value = false,
+  Callback = function(r0_244)
+    -- line: [0, 0] id: 244
+    getgenv().JumpPowerBypass = r0_244
+    if r0_244 then
+      task.spawn(function()
+        -- line: [0, 0] id: 245
+        while getgenv().JumpPowerBypass do
+          local r0_245 = r60_0
+          if r0_245 then
+            r0_245 = r60_0:GetState()
+            if r0_245 == Enum.HumanoidStateType.Jumping then
+              r0_245 = r59_0.HumanoidRootPart
+              r0_245.CFrame = r59_0.HumanoidRootPart.CFrame * CFrame.new(0, r29_0, 0)
+            end
+          end
+          task.wait()
+        end
+      end)
+    end
+  end,
+}
+r4_0.Main:[r81_0](r81_0)
+r81_0 = "Slider"
+r81_0 = {
+  Title = "Jump Boost Value",
+  Value = {
+    Min = 1,
+    Max = 1000,
+    Default = 200,
+  },
+  Callback = function(r0_25)
+    -- line: [0, 0] id: 25
+    r29_0 = r0_25
+  end,
+}
+r4_0.Main:[r81_0](r81_0)
+r81_0 = "Toggle"
+r81_0 = {
+  Title = "No Stun",
+  Value = false,
+  Callback = function(r0_271)
+    -- line: [0, 0] id: 271
+    getgenv().AutoNoSlow = r0_271
+    task.spawn(function()
+      -- line: [0, 0] id: 272
+      local r0_272 = nil	-- notice: implicit variable refs by block#[0]
+      r0_272 = game:GetService("RunService").RenderStepped:Connect(function()
+        -- line: [0, 0] id: 273
+        if getgenv().AutoNoSlow == true then
+          pcall(function()
+            -- line: [0, 0] id: 274
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25
+          end)
+        else
+          r0_272:Disconnect()
+        end
+      end)
+    end)
+  end,
+}
+r4_0.Main:[r81_0](r81_0)
+r4_0.Main:Section({
+  Title = "Character",
+  Icon = "box",
+})
+r81_0 = "Toggle"
+r81_0 = {
+  Title = "Fake Downslam",
+  Value = false,
+  Callback = function(r0_185)
+    -- line: [0, 0] id: 185
+    r27_0 = r0_185
+  end,
+}
+r4_0.Main:[r81_0](r81_0)
+local function r79_0(r0_2, r1_2)
+  -- line: [0, 0] id: 2
+  if r27_0 and r1_2 == Enum.HumanoidStateType.Jumping then
+    local r2_2 = Instance.new("Animation")
+    r2_2.AnimationId = "rbxassetid://10470104242"
+    if r60_0 then
+      local r3_2 = r60_0:LoadAnimation(r2_2)
+      task.wait(0.3)
+      r3_2:Play()
+    end
+  end
+end
+local r82_0 = "Toggle"
+r82_0 = {
+  Title = "Auto Safe Zone",
+  Value = false,
+  Callback = function(r0_196)
+    -- line: [0, 0] id: 196
+    getgenv().AutoReturnSafeZone = r0_196
+    if r0_196 then
+      local r1_196 = false
+      task.spawn(function()
+        -- line: [0, 0] id: 197
+        while getgenv().AutoReturnSafeZone do
+          local r0_197 = r60_0
+          if r0_197 then
+            r0_197 = r60_0.Health
+            if r0_197 < 45 then
+              r0_197 = r1_196
+              if not r0_197 then
+                r59_0.HumanoidRootPart.CFrame = CFrame.new(150, 705, 30)
+                r0_197 = true
+                r1_196 = r0_197
+              end
+            end
+          else
+            r0_197 = r60_0
+            if r0_197 then
+              r0_197 = r60_0.Health
+              if r0_197 == 50 then
+                r0_197 = r1_196
+                if r0_197 then
+                  r0_197 = false
+                  r1_196 = r0_197
+                end
+              end
+            end
+          end
+          task.wait(0.15)
+        end
+      end)
+      -- close: r1_196
+    end
+  end,
+}
+r4_0.Main:[r82_0](r82_0)
+r82_0 = "Toggle"
+r82_0 = {
+  Title = "Spawn Fe Stone Effects",
+  Value = false,
+  Callback = function(r0_198)
+    -- line: [0, 0] id: 198
+    getgenv().AutoDashEffect = r0_198
+    if r0_198 then
+      task.spawn(function()
+        -- line: [0, 0] id: 199
+        while getgenv().AutoDashEffect do
+          local r0_199 = r59_0
+          if r0_199 then
+            r0_199 = r59_0:FindFirstChild("Communicate")
+            if r0_199 then
+              r0_199 = {}
+              r0_199[1] = {
+                Dash = Enum.KeyCode.S,
+                Key = Enum.KeyCode.Q,
+                Goal = "KeyPress",
+              }
+              r59_0.Communicate:FireServer(unpack(r0_199))
+              task.wait(0.15)
+            else
+              break
+            end
+          else
+            break
+          end
+        end
+      end)
+    end
+  end,
+}
+r4_0.Main:[r82_0](r82_0)
+r82_0 = "Toggle"
+r82_0 = {
+  Title = "Roast Dead Players",
+  Value = false,
+  Callback = function(r0_4)
+    -- line: [0, 0] id: 4
+    getgenv().AutoMocking = r0_4
+    if r0_4 then
+      task.spawn(function()
+        -- line: [0, 0] id: 5
+        while getgenv().AutoMocking do
+          local r0_5 = r59_0 and r59_0:FindFirstChild("HumanoidRootPart")
+          if r0_5 then
+            local r1_5 = 65
+            local r2_5 = nil
+            for r6_5, r7_5 in ipairs(workspace.Live:GetChildren()) do
+              local r8_5 = r7_5:FindFirstChildOfClass("Humanoid")
+              local r9_5 = r7_5:FindFirstChild("HumanoidRootPart")
+              if r8_5 and r9_5 and r7_5 ~= r59_0 and r8_5.Health == 0 then
+                local r10_5 = (r0_5.Position - r9_5.Position).magnitude
+                if r10_5 < r1_5 then
+                  r1_5 = r10_5
+                  r2_5 = r9_5
+                end
+              end
+            end
+            if r2_5 then
+              r9_0.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(r40_0[math.random(#r40_0)], "All")
+            end
+          end
+          task.wait(2.85)
+        end
+      end)
+    end
+  end,
+}
+r4_0.Main:[r82_0](r82_0)
+r11_0.CharacterAdded:Connect(function(r0_89)
+  -- line: [0, 0] id: 89
+  r47_0(r0_89)
+  if r21_0 then
+    r51_0(r0_89)
+  end
+  r60_0.AnimationPlayed:Connect(onAnimationPlayed_AutoVoid)
+  r60_0.AnimationPlayed:Connect(r48_0)
+  r60_0.AnimationPlayed:Connect(onAnimationPlayed_DeathCounter)
+  r60_0.StateChanged:Connect(r79_0)
+  r60_0.Died:Connect(onCharacterDied_DeathCounter)
+  r60_0.Died:Connect(function()
+    -- line: [0, 0] id: 90
+  end)
+end)
+r60_0.AnimationPlayed:Connect(onAnimationPlayed_AutoVoid)
+r60_0.AnimationPlayed:Connect(r48_0)
+r60_0.AnimationPlayed:Connect(onAnimationPlayed_DeathCounter)
+r60_0.StateChanged:Connect(r79_0)
+r60_0.Died:Connect(onCharacterDied_DeathCounter)
+r60_0.Died:Connect(function()
+  -- line: [0, 0] id: 107
+end)
+if r21_0 then
+  r51_0(r59_0)
+end
+r56_0.PlayerAdded:Connect(r74_0)
+r56_0.PlayerAdded:Connect(r77_0)
+for r83_0, r84_0 in pairs(r56_0:GetPlayers()) do
+  r74_0(r84_0)
+  r77_0(r84_0)
+end
+r56_0.PlayerRemoving:Connect(function(r0_14)
+  -- line: [0, 0] id: 14
+  if r36_0[r0_14] and r36_0[r0_14][1] then
+    r36_0[r0_14][1]()
+  end
+end)
+r82_0 = "Toggle"
+r82_0 = {
+  Title = "Grape Dummy :>",
+  Value = false,
+  Callback = function(r0_123)
+    -- line: [0, 0] id: 123
+    getgenv().AutoFuckingGoku = r0_123
+    task.spawn(function()
+      -- line: [0, 0] id: 127
+      if getgenv().AutoFuckingGoku == true then
+        local r0_127 = Instance.new("Animation")
+        r0_127.AnimationId = "rbxassetid://148840371"
+        local r1_127 = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(r0_127)
+        r1_127:Play()
+        r1_127:AdjustSpeed(6)
+      else
+        for r3_127, r4_127 in ipairs((game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid") or game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("AnimationController")):GetPlayingAnimationTracks()) do
+          r4_127:Stop()
+        end
+      end
+    end)
+    task.spawn(function()
+      -- line: [0, 0] id: 124
+      if getgenv().AutoFuckingGoku == true then
+        local r1_124 = Instance.new("Sound")
+        r1_124.Name = "Sound"
+        r1_124.SoundId = "http://www.roblox.com/asset/?id=8448213216"
+        r1_124.Volume = 10
+        r1_124.Looped = false
+        r1_124.Archivable = false
+        r1_124.Parent = game.Workspace
+        r1_124:Play()
+        local r3_124 = Instance.new("Sound")
+        r3_124.Name = "Sound"
+        r3_124.SoundId = "http://www.roblox.com/asset/?id=9114758204"
+        r3_124.Volume = 10
+        r3_124.Looped = true
+        r3_124.Archivable = false
+        r3_124.Parent = game.Workspace
+        r3_124:Play()
+      else
+        for r3_124, r4_124 in ipairs(workspace:children()) do
+          if r4_124:isA("Sound") then
+            r4_124:Destroy()
+          end
+        end
+      end
+    end)
+    task.spawn(function()
+      -- line: [0, 0] id: 125
+      while getgenv().AutoFuckingGoku == true do
+        pcall(function()
+          -- line: [0, 0] id: 126
+          local r0_126 = game.Workspace.Live["Weakest Dummy"]
+          game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(r0_126.HumanoidRootPart.Position - r0_126.HumanoidRootPart.CFrame.LookVector * 1, r0_126.HumanoidRootPart.Position)
+        end)
+        task.wait(0)
+      end
+    end)
+  end,
+}
+r4_0.Main:[r82_0](r82_0)
+r4_0.Misc:Button({
+  Title = "Copy Discord Link (join for more info)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 212
+    setclipboard("https://discord.gg/mdJKdwbKjE")
+  end,
+})
+r4_0.Misc:Section({
+  Title = "Universal Scripts",
+  Icon = "flame",
+})
+r4_0.Misc:Button({
+  Title = "Inf Yield",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 21
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Dex Explorer",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 121
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Classic-Dex-Explorer-21009"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Remote Spy",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 278
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Keyboard",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 334
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Anim Logger",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 47
+    loadstring(game:HttpGet("https://pastefy.app/juBGMpCZ/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "f3x",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 74
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/refs/heads/main/f3x.lua"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Fly V3",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 288
+    loadstring(game:HttpGet("https://pastebin.com/raw/xuSMWfDu"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "VFX Logger",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 170
+    loadstring(game:HttpGet("https://pastebin.com/raw/2uXfJqdU"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Auto Block V10",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 264
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Cyborg883/TSB/refs/heads/main/CombatGui"))()
+  end,
+})
+r4_0.Misc:Section({
+  Title = "Player",
+  Icon = "star",
+})
+r4_0.Misc:Button({
+  Title = "ServerHop",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 172
+    loadstring(game:HttpGet("https://pastefy.app/uTXUoORd/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Rejoin",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 187
+    game:GetService("TeleportService"):Teleport(game.PlaceId)
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Reset",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 167
+    loadstring(game:HttpGet("https://pastefy.app/YPv8xrYN/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Fixcam V1",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 218
+    Camera.CameraType = Enum.CameraType.Custom
+    r58_0.CameraMode = Enum.CameraMode.Classic
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Fixcam V2",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 27
+    loadstring(game:HttpGet("https://pastefy.app/IrvnCaF2/raw"))()
+  end,
+})
+r4_0.Misc:Section({
+  Title = "Random",
+  Icon = "utensils",
+})
+r4_0.Misc:Button({
+  Title = "Buy limited Emotes",
+  Desc = "(You can buy limited emotes that have been removed from the game with robux idrl is this patched or not)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 247
+    loadstring(game:HttpGet("https://pastefy.app/UiPAjkB4/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Strange Character Mod",
+  Desc = "(WallCombo Everywhere + Ragdoll Hit + NoVelocity Dash + Upsitedown)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 231
+    loadstring(game:HttpGet("https://pastefy.app/dwPwscTr/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Strange Attacks",
+  Desc = "(All moves fall from above)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 307
+    loadstring(game:HttpGet("https://pastefy.app/jP73sWh8/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Baldy Dummy",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 301
+    loadstring(game:HttpGet("https://pastefy.app/b1matovZ/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Crazy Spin",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 316
+    loadstring(game:HttpGet("https://pastefy.app/BFB6IlAQ/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Crazy Dance",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 246
+    loadstring(game:HttpGet("https://pastefy.app/I5eLfnge/raw"))()
+  end,
+})
+r82_0 = "Toggle"
+r82_0 = {
+  Title = "Anti Fly Bypass",
+  Value = false,
+  Callback = function(r0_23)
+    -- line: [0, 0] id: 23
+    if r0_23 then
+      workspace:SetAttribute("VIPServer", true)
+    else
+      workspace:SetAttribute("VIPServer", false)
+    end
+  end,
+}
+r4_0.Misc:[r82_0](r82_0)
+r4_0.Misc:Section({
+  Title = "Tools",
+  Icon = "eye",
+})
+function r80_0(r0_162, r1_162)
+  -- line: [0, 0] id: 162
+  local r3_162 = nil
+  local r4_162 = Instance.new("Tool")
+  r4_162.Name = r0_162
+  r4_162.RequiresHandle = false
+  r4_162.Parent = r15_0.Backpack
+  r4_162.Equipped:Connect(function()
+    -- line: [0, 0] id: 163
+    r3_162 = r15_0.Character.HumanoidRootPart.Position
+    r15_0.Character:SetPrimaryPartCFrame(CFrame.new(r1_162))
+  end)
+  r4_162.Unequipped:Connect(function()
+    -- line: [0, 0] id: 164
+    if r3_162 then
+      r15_0.Character:SetPrimaryPartCFrame(CFrame.new(r3_162))
+    end
+  end)
+end
+r4_0.Misc:Dropdown({
+  Title = "Place Tools",
+  Desc = "What Place Tool Do You Want?",
+  [r5_0] = {
+    "Map",
+    "SafeZone1",
+    "SafeZone2",
+    "Pixel",
+    "Void",
+    "DarkNess",
+    "Montain",
+    "Counter",
+    "Counter Up",
+    "Atomic Base",
+    "Atomic Base Up",
+    "Atomic Slash",
+    "Prison"
+  },
+  Multi = false,
+  AllowNone = false,
+  Callback = function(r0_91)
+    -- line: [0, 0] id: 91
+    local r2_91 = ({
+      Map = {
+        name = "Map Tool",
+        position = Vector3.new(150, 440, 30),
+      },
+      SafeZone1 = {
+        name = "SafeZone1 Tool",
+        position = Vector3.new(150, 505, 30),
+      },
+      SafeZone2 = {
+        name = "SafeZone2 Tool",
+        position = Vector3.new(150, 705, 30),
+      },
+      Pixel = {
+        name = "Pixel Tool",
+        position = Vector3.new(30000000, 30000000, 30000000),
+      },
+      Void = {
+        name = "Void Tool",
+        position = Vector3.new(150, -495, 30),
+      },
+      DarkNess = {
+        name = "DarkNess Tool",
+        position = Vector3.new(0, 900000000002, 0),
+      },
+      Montain = {
+        name = "Mountain Tool",
+        position = Vector3.new(155.577, 628.742, -447.938),
+      },
+      Counter = {
+        name = "Counter Tool",
+        position = Vector3.new(-68, 29, 20346),
+      },
+      ["Counter Up"] = {
+        name = "CounterUp Tool",
+        position = Vector3.new(-68, 84, 20354),
+      },
+      ["Atomic Base"] = {
+        name = "AtomicBase Tool",
+        position = Vector3.new(1063, 30, 23006),
+      },
+      ["Atomic Base Up"] = {
+        name = "AtomicBaseUp Tool",
+        position = Vector3.new(1063, 405, 23006),
+      },
+      ["Atomic Slash"] = {
+        name = "AtomicSlash Tool",
+        position = Vector3.new(1063, 131, 23006),
+      },
+      Prison = {
+        name = "Prison Tool",
+        position = Vector3.new(438, 439, -376),
+      },
+    })[r0_91]
+    if r2_91 then
+      r80_0(r2_91.name, r2_91.position)
+    end
+  end,
+})
+r4_0.Misc:Button({
+  Title = "TrashCan Tool",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 318
+    loadstring(game:HttpGet("https://pastefy.app/ffnvee4X/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Fake 20-20-20 Dropkick",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 99
+    loadstring(game:HttpGet("https://pastefy.app/Ja7L18CD/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Dodge",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 224
+    loadstring(game:HttpGet("https://pastefy.app/XB1ykQuc/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "TP Tool (Anim)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 171
+    loadstring(game:HttpGet("https://pastefy.app/yEwya3MR/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "TP Tool (Normal)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 253
+    loadstring(game:HttpGet("https://pastefy.app/ZLpXLAeF/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Run Tool",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 248
+    loadstring(game:HttpGet("https://pastefy.app/6DahLoA3/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Super Run Tool",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 155
+    loadstring(game:HttpGet("https://pastefy.app/uN8jb9GF/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Jerk Of Tool",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 103
+    loadstring(game:HttpGet("https://pastefy.app/LcC6ZrhN/raw"))()
+  end,
+})
+r4_0.Misc:Button({
+  Title = "Invis Block Tool (Buggy)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 97
+    loadstring(game:HttpGet("https://pastefy.app/sl5RToWq/raw"))()
+  end,
+})
+r4_0.Tech:Button({
+  Title = "Copy Discord Link (join for more info)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 48
+    setclipboard("https://discord.gg/mdJKdwbKjE")
+  end,
+})
+r4_0.Tech:Section({
+  Title = "Tech Scripts",
+  Icon = "box",
+})
+r4_0.Tech:Button({
+  Title = "M1 Reset Script",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 53
+    getgenv().keybinds = {
+      m1reset = Enum.KeyCode.R,
+      emotedash = Enum.KeyCode.T,
+      rotation = Enum.KeyCode.H,
+    }
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Slaphello/M1-Reset-And-Emote-Dash-TSB-OLD-/refs/heads/main/M1R%26ED%20TSB"))()
+  end,
+})
+r4_0.Tech:Button({
+  Title = "Auto Kyoto Script",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 232
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kietba/Kietba/refs/heads/main/Auto%20kyoto%20ma%20hoa"))()
+  end,
+})
+r4_0.Tech:Button({
+  Title = "Loop Dash Script",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 96
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kietba/Kietba/refs/heads/main/Loop%20Dash%20Rework%20Script%20Real"))()
+  end,
+})
+r4_0.Tech:Button({
+  Title = "Oreo Dash Script",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 95
+    loadstring("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/Kietba/Kietba/refs/heads/main/Oreo%20Tech%20Script\"))()")()
+  end,
+})
+r4_0.Tech:Button({
+  Title = "Tornado Dash Script",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 217
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kietba/Kietba/refs/heads/main/Idk%20lolololol"))()
+  end,
+})
+r4_0.Tech:Button({
+  Title = "Supa Dash Script",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 281
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kietba/Kietba/refs/heads/main/Supa%20tech%20script"))()
+  end,
+})
+r4_0.Tech:Button({
+  Title = "BackDash Script (MOBILE)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 339
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kietba/Kietba/refs/heads/main/BackDash%20Tech"))()
+  end,
+})
+r4_0.Tech:Button({
+  Title = "Backdash Script (PC)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 94
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kietba/Kietba/refs/heads/main/BackDash%20For%20Pc"))()
+  end,
+})
+r4_0.Tech:Section({
+  Title = "Auto Techs",
+  Icon = "sword",
+})
+r81_0 = nil
+local r84_0 = "Toggle"
+r84_0 = {
+  Title = "True DownSlam",
+  Value = false,
+  Callback = function(r0_77)
+    -- line: [0, 0] id: 77
+    local r1_77 = game:GetService("Players")
+    local r2_77 = game:GetService("RunService")
+    local r3_77 = game:GetService("Workspace")
+    local r4_77 = r1_77.LocalPlayer
+    local r5_77 = r3_77.CurrentCamera
+    local r6_77 = {
+      ["rbxassetid://13532600125"] = true,
+      ["rbxassetid://10469630950"] = true,
+      ["rbxassetid://13296577783"] = true,
+      ["rbxassetid://13370310513"] = true,
+      ["rbxassetid://15240216931"] = true,
+      ["rbxassetid://16515520431"] = true,
+      ["rbxassetid://17889461810"] = true,
+    }
+    local r7_77 = {
+      ["rbxassetid://13532604085"] = true,
+      ["rbxassetid://10469639222"] = true,
+      ["rbxassetid://13295919399"] = true,
+      ["rbxassetid://13378751717"] = true,
+      ["rbxassetid://15240176873"] = true,
+      ["rbxassetid://16515448089"] = true,
+      ["rbxassetid://17889471098"] = true,
+    }
+    local r8_77 = {}
+    local r9_77 = nil
+    local r10_77 = nil
+    local function r11_77()
+      -- line: [0, 0] id: 81
+      local r0_81 = r4_77.Character or r4_77.CharacterAdded:Wait()
+      local r1_81 = r0_81:WaitForChild("Humanoid")
+      r0_81.PrimaryPart = r0_81:WaitForChild("HumanoidRootPart")
+      return r0_81, r1_81
+    end
+    local function r12_77()
+      -- line: [0, 0] id: 80
+      if not r9_77 or not r9_77.PrimaryPart then
+        return 
+      end
+      local r0_80 = r5_77.CameraSubject
+      r5_77.CameraSubject = nil
+      local r1_80 = r9_77:GetPivot()
+      local r2_80 = r1_80 + Vector3.new(0, 7, 0)
+      local r3_80 = 10
+      local r4_80 = 0.1
+      for r8_80 = 1, r3_80, 1 do
+        r9_77:PivotTo(r1_80:Lerp(r2_80, r8_80 / r3_80))
+        task.wait(r4_80 / r3_80)
+      end
+      r5_77.CameraSubject = r0_80
+    end
+    if r0_77 then
+      if r81_0 then
+        r81_0:Disconnect()
+      end
+      r9_77, r10_77 = r11_77()
+      r81_0 = r2_77.RenderStepped:Connect(function()
+        -- line: [0, 0] id: 78
+        if r4_77.Character ~= r9_77 then
+          r9_77, r10_77 = r11_77()
+        end
+        for r3_78, r4_78 in pairs(r10_77:GetPlayingAnimationTracks()) do
+          local r5_78 = tostring(r4_78.Animation.AnimationId)
+          local r6_78 = tick()
+          if r6_77[r5_78] and (not r8_77[r5_78] or 0.5 < r6_78 - r8_77[r5_78]) then
+            r8_77[r5_78] = r6_78
+            task.delay(0.15, r12_77)
+          elseif r7_77[r5_78] and (not r8_77[r5_78] or 0.5 < r6_78 - r8_77[r5_78]) then
+            r8_77[r5_78] = r6_78
+            task.delay(0.15, function()
+              -- line: [0, 0] id: 79
+              r10_77:ChangeState(Enum.HumanoidStateType.Jumping)
+            end)
+          end
+        end
+      end)
+    elseif r81_0 then
+      r81_0:Disconnect()
+      r81_0 = nil
+    end
+  end,
+}
+r4_0.Tech:[r84_0](r84_0)
+r82_0 = false
+local r83_0 = nil
+r84_0 = "rbxassetid://13294471966"
+local r85_0 = 0.23
+local function r86_0()
+  -- line: [0, 0] id: 251
+  local r0_251 = {
+    [1] = {
+      Dash = Enum.KeyCode.W,
+      Key = Enum.KeyCode.Q,
+      Goal = "KeyPress",
+    },
+  }
+  local r1_251 = r58_0.Character
+  if r1_251 and r1_251:FindFirstChild("Communicate") then
+    r1_251.Communicate:FireServer(unpack(r0_251))
+  end
+end
+local function r87_0()
+  -- line: [0, 0] id: 313
+  local r0_313 = r58_0.Character and r58_0.Character:FindFirstChild("HumanoidRootPart")
+  if r0_313 then
+    r0_313.CFrame = r0_313.CFrame * CFrame.new(0, 0, 3)
+  end
+end
+local function r88_0()
+  -- line: [0, 0] id: 28
+  r83_0 = (r58_0.Character or r58_0.CharacterAdded:Wait()):WaitForChild("Humanoid").AnimationPlayed:Connect(function(r0_29)
+    -- line: [0, 0] id: 29
+    if r0_29.Animation and r0_29.Animation.AnimationId == r84_0 and not r82_0 then
+      r82_0 = true
+      task.delay(r85_0, function()
+        -- line: [0, 0] id: 31
+        r87_0()
+        r86_0()
+      end)
+      task.delay(5, function()
+        -- line: [0, 0] id: 30
+        r82_0 = false
+      end)
+    end
+  end)
+end
+local r91_0 = "Toggle"
+r91_0 = {
+  Title = "Auto Twisted Tech",
+  Value = false,
+  Callback = function(r0_256)
+    -- line: [0, 0] id: 256
+    if r0_256 then
+      r88_0()
+      r58_0.CharacterAdded:Connect(function()
+        -- line: [0, 0] id: 257
+        task.wait(1)
+        r88_0()
+      end)
+    elseif r83_0 then
+      r83_0:Disconnect()
+      r83_0 = nil
+    end
+  end,
+}
+r4_0.Tech:[r91_0](r91_0)
+local r89_0 = game:GetService("TweenService")
+local r90_0 = workspace.CurrentCamera
+r91_0 = false
+local r92_0 = nil
+local r93_0 = nil
+local function r94_0()
+  -- line: [0, 0] id: 208
+  local r0_208 = {
+    [1] = {
+      Dash = Enum.KeyCode.W,
+      Key = Enum.KeyCode.Q,
+      Goal = "KeyPress",
+    },
+  }
+  local r1_208 = r58_0.Character
+  if r1_208 and r1_208:FindFirstChild("Communicate") then
+    r1_208.Communicate:FireServer(unpack(r0_208))
+  end
+  local r2_208 = r90_0.CFrame
+  r90_0.CameraType = Enum.CameraType.Scriptable
+  local r4_208 = r89_0:Create(r90_0, TweenInfo.new(0.1, Enum.EasingStyle.Sine), {
+    CFrame = r2_208 * CFrame.Angles(40, math.rad(-90), 180),
+  })
+  r4_208:Play()
+  r4_208.Completed:Wait()
+  wait(0.00001)
+  local r5_208 = r89_0:Create(r90_0, TweenInfo.new(0.001, Enum.EasingStyle.Sine), {
+    CFrame = r2_208,
+  })
+  r5_208:Play()
+  r5_208.Completed:Wait()
+  wait(0.1)
+  local r7_208 = r89_0:Create(r90_0, TweenInfo.new(0.0001, Enum.EasingStyle.Sine), {
+    CFrame = r2_208 * CFrame.Angles(math.rad(-6), math.rad(20), 0),
+  })
+  r7_208:Play()
+  r7_208.Completed:Wait()
+  r90_0.CameraType = Enum.CameraType.Custom
+end
+local function r95_0(r0_189)
+  -- line: [0, 0] id: 189
+  r92_0 = r0_189.AnimationPlayed:Connect(function(r0_190)
+    -- line: [0, 0] id: 190
+    if r0_190.Animation and r0_190.Animation.AnimationId == r84_0 and not r91_0 then
+      r91_0 = true
+      local r1_190 = r58_0.Character
+      local r2_190 = r1_190 and r1_190:FindFirstChild("HumanoidRootPart")
+      if r2_190 then
+        r2_190.CFrame = r2_190.CFrame + r2_190.CFrame.LookVector * -1
+      end
+      task.delay(0.25, function()
+        -- line: [0, 0] id: 191
+        r94_0()
+        wait(5)
+        r91_0 = false
+      end)
+    end
+  end)
+end
+local function r96_0()
+  -- line: [0, 0] id: 209
+  local r1_209 = (r58_0.Character or r58_0.CharacterAdded:Wait()):WaitForChild("Humanoid")
+  local r2_209 = r1_209:FindFirstChildOfClass("Animator")
+  if r2_209 then
+    r95_0(r2_209)
+  else
+    r1_209.ChildAdded:Connect(function(r0_210)
+      -- line: [0, 0] id: 210
+      if r0_210:IsA("Animator") then
+        r95_0(r0_210)
+      end
+    end)
+  end
+end
+local r99_0 = "Toggle"
+r99_0 = {
+  Title = "Instant Twisted Tech",
+  Value = false,
+  Callback = function(r0_150)
+    -- line: [0, 0] id: 150
+    if r0_150 then
+      r96_0()
+      r93_0 = r58_0.CharacterAdded:Connect(r96_0)
+    else
+      if r92_0 then
+        r92_0:Disconnect()
+        r92_0 = nil
+      end
+      if r93_0 then
+        r93_0:Disconnect()
+        r93_0 = nil
+      end
+    end
+  end,
+}
+r4_0.Tech:[r99_0](r99_0)
+local r97_0 = "rbxassetid://12296113986"
+local r98_0 = false
+r99_0 = nil
+local r100_0 = nil
+local function r101_0()
+  -- line: [0, 0] id: 169
+  local r0_169 = r58_0.Character
+  local r1_169 = r0_169 and r0_169:FindFirstChild("Humanoid")
+  if r1_169 then
+    r1_169.Jump = true
+  end
+end
+local function r102_0()
+  -- line: [0, 0] id: 67
+  local r0_67 = r58_0.Character
+  local r1_67 = r0_67 and r0_67:FindFirstChild("Humanoid")
+  if r1_67 then
+    r1_67.Jump = false
+  end
+end
+local function r103_0()
+  -- line: [0, 0] id: 230
+  local r0_230 = r58_0.Character
+  local r1_230 = r0_230 and r0_230:FindFirstChild("HumanoidRootPart")
+  if not r1_230 then
+    return 
+  end
+  local r2_230 = r1_230.CFrame
+  local r3_230 = -r2_230.LookVector
+  r1_230.CFrame = CFrame.lookAt(r2_230.Position, r2_230.Position + r3_230)
+  r90_0.CFrame = CFrame.lookAt(r90_0.CFrame.Position, r90_0.CFrame.Position + r3_230)
+end
+local function r104_0()
+  -- line: [0, 0] id: 151
+  local r0_151 = r58_0.Character
+  local r1_151 = r0_151 and r0_151:FindFirstChild("Communicate")
+  if r1_151 then
+    r1_151:FireServer(unpack({
+      [1] = {
+        Dash = Enum.KeyCode.W,
+        Key = Enum.KeyCode.Q,
+        Goal = "KeyPress",
+      },
+    }))
+  end
+end
+local function r105_0(r0_62)
+  -- line: [0, 0] id: 62
+  r99_0 = r0_62.AnimationPlayed:Connect(function(r0_63)
+    -- line: [0, 0] id: 63
+    if r0_63.Animation and r0_63.Animation.AnimationId == r97_0 and not r98_0 then
+      r98_0 = true
+      r101_0()
+      task.delay(2, function()
+        -- line: [0, 0] id: 64
+        r104_0()
+        task.delay(0.26, function()
+          -- line: [0, 0] id: 65
+          r103_0()
+          r102_0()
+          r98_0 = false
+        end)
+      end)
+    end
+  end)
+end
+local function r106_0()
+  -- line: [0, 0] id: 111
+  r105_0((r58_0.Character or r58_0.CharacterAdded:Wait()):WaitForChild("Humanoid"))
+end
+local r109_0 = "Toggle"
+r109_0 = {
+  Title = "Auto Supa Stream",
+  Value = false,
+  Callback = function(r0_34)
+    -- line: [0, 0] id: 34
+    if r0_34 then
+      r106_0()
+      r100_0 = r58_0.CharacterAdded:Connect(r106_0)
+    else
+      if r99_0 then
+        r99_0:Disconnect()
+        r99_0 = nil
+      end
+      if r100_0 then
+        r100_0:Disconnect()
+        r100_0 = nil
+      end
+    end
+  end,
+}
+r4_0.Tech:[r109_0](r109_0)
+local r107_0 = "rbxassetid://10503381238"
+local r108_0 = false
+r109_0 = nil
+local r110_0 = nil
+local function r111_0()
+  -- line: [0, 0] id: 148
+  local r0_148 = r58_0.Character
+  local r1_148 = r0_148 and r0_148:FindFirstChild("Humanoid")
+  if r1_148 then
+    r1_148.Jump = true
+  end
+end
+local function r112_0()
+  -- line: [0, 0] id: 320
+  local r0_320 = r58_0.Character
+  local r1_320 = r0_320 and r0_320:FindFirstChild("Humanoid")
+  if r1_320 then
+    r1_320.Jump = false
+  end
+end
+local function r113_0()
+  -- line: [0, 0] id: 249
+  local r0_249 = r58_0.Character
+  local r1_249 = r0_249 and r0_249:FindFirstChild("HumanoidRootPart")
+  if not r1_249 then
+    return 
+  end
+  local r2_249 = r1_249.CFrame
+  local r3_249 = -r2_249.LookVector
+  r1_249.CFrame = CFrame.lookAt(r2_249.Position, r2_249.Position + r3_249)
+  r90_0.CFrame = CFrame.lookAt(r90_0.CFrame.Position, r90_0.CFrame.Position + r3_249)
+end
+local function r114_0()
+  -- line: [0, 0] id: 188
+  local r0_188 = r58_0.Character
+  local r1_188 = r0_188 and r0_188:FindFirstChild("Communicate")
+  if r1_188 then
+    r1_188:FireServer(unpack({
+      [1] = {
+        Dash = Enum.KeyCode.W,
+        Key = Enum.KeyCode.Q,
+        Goal = "KeyPress",
+      },
+    }))
+  end
+end
+local function r115_0(r0_128)
+  -- line: [0, 0] id: 128
+  r109_0 = r0_128.AnimationPlayed:Connect(function(r0_129)
+    -- line: [0, 0] id: 129
+    if r0_129.Animation and r0_129.Animation.AnimationId == r107_0 and not r108_0 then
+      r108_0 = true
+      r111_0()
+      task.delay(1, function()
+        -- line: [0, 0] id: 130
+        r114_0()
+        task.delay(0.26, function()
+          -- line: [0, 0] id: 131
+          r113_0()
+          r112_0()
+          r108_0 = false
+        end)
+      end)
+    end
+  end)
+end
+local function r116_0()
+  -- line: [0, 0] id: 3
+  r115_0((r58_0.Character or r58_0.CharacterAdded:Wait()):WaitForChild("Humanoid"))
+end
+local r119_0 = "Toggle"
+r119_0 = {
+  Title = "Auto Supa Uppercut",
+  Value = false,
+  Callback = function(r0_110)
+    -- line: [0, 0] id: 110
+    if r0_110 then
+      r116_0()
+      r110_0 = r58_0.CharacterAdded:Connect(r116_0)
+    else
+      if r109_0 then
+        r109_0:Disconnect()
+        r109_0 = nil
+      end
+      if r110_0 then
+        r110_0:Disconnect()
+        r110_0 = nil
+      end
+    end
+  end,
+}
+r4_0.Tech:[r119_0](r119_0)
+local r117_0 = "rbxassetid://12273188754"
+local r118_0 = nil
+r119_0 = false
+local r122_0 = "Toggle"
+r122_0 = {
+  Title = "Flowing + Grasp",
+  Value = false,
+  Callback = function(r0_200)
+    -- line: [0, 0] id: 200
+    r119_0 = r0_200
+    if r118_0 then
+      r118_0:Disconnect()
+      r118_0 = nil
+    end
+    if not r119_0 then
+      return 
+    end
+    local r1_200 = false
+    local r2_200 = false
+    r118_0 = game:GetService("RunService").RenderStepped:Connect(function()
+      -- line: [0, 0] id: 201
+      local r0_201 = r58_0.Character
+      if not r0_201 then
+        return 
+      end
+      local r1_201 = r0_201:FindFirstChild("Humanoid")
+      local r2_201 = r0_201:FindFirstChild("HumanoidRootPart")
+      if not r1_201 or not r2_201 then
+        return 
+      end
+      local r3_201 = false
+      for r7_201, r8_201 in ipairs(r1_201:GetPlayingAnimationTracks()) do
+        if r8_201.Animation and r8_201.Animation.AnimationId == r117_0 then
+          r3_201 = true
+          break
+        end
+      end
+      if r3_201 and not r1_200 and not r2_200 then
+        r1_200 = true
+        r2_200 = true
+        task.delay(1.8, function()
+          -- line: [0, 0] id: 202
+          local r2_202 = r89_0:Create(r2_201, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+            CFrame = r2_201.CFrame + r2_201.CFrame.LookVector * 24,
+          })
+          r2_202:Play()
+          r2_202.Completed:Wait()
+          local r3_202 = r58_0.Backpack:FindFirstChild("Hunter\'s Grasp")
+          local r4_202 = r0_201:FindFirstChild("Communicate")
+          if r3_202 and r4_202 then
+            r4_202:FireServer(unpack({
+              [1] = {
+                Tool = r3_202,
+                Goal = "Console Move",
+              },
+            }))
+          end
+          r1_200 = false
+        end)
+      elseif not r3_201 then
+        r2_200 = false
+      end
+    end)
+  end,
+}
+r4_0.Tech:[r122_0](r122_0)
+local r120_0 = "rbxassetid://10503381238"
+local r121_0 = Vector3.new(0, 8, 0)
+r122_0 = false
+local r123_0 = nil
+local r126_0 = "Toggle"
+r126_0 = {
+  Title = "Upper + Grasp",
+  Value = false,
+  Callback = function(r0_6)
+    -- line: [0, 0] id: 6
+    r122_0 = r0_6
+    if r123_0 then
+      r123_0:Disconnect()
+      r123_0 = nil
+    end
+    if not r122_0 then
+      return 
+    end
+    local r1_6 = false
+    local r2_6 = false
+    local r3_6 = false
+    r123_0 = game:GetService("RunService").RenderStepped:Connect(function()
+      -- line: [0, 0] id: 7
+      local r0_7 = r58_0.Character
+      local r1_7 = r0_7 and r0_7:FindFirstChild("HumanoidRootPart")
+      local r2_7 = r0_7 and r0_7:FindFirstChild("Humanoid")
+      if not r0_7 or not r1_7 or not r2_7 then
+        return 
+      end
+      local r3_7 = false
+      for r7_7, r8_7 in ipairs(r2_7:GetPlayingAnimationTracks()) do
+        if r8_7.Animation and r8_7.Animation.AnimationId == r120_0 then
+          r3_7 = true
+          break
+        end
+      end
+      if r3_7 and not r1_6 and not r2_6 and not r3_6 then
+        r1_6 = true
+        r2_6 = true
+        r3_6 = true
+        task.delay(0.18, function()
+          -- line: [0, 0] id: 8
+          local r1_8 = 7
+          local r2_8 = workspace:FindFirstChild("Live")
+          local r0_8 = nil	-- notice: implicit variable refs by block#[10, 11]
+          if r2_8 then
+            for r6_8, r7_8 in ipairs(r2_8:GetChildren()) do
+              if r7_8:IsA("Model") and r7_8 ~= r0_7 then
+                local r8_8 = r7_8:FindFirstChild("Torso") or r7_8:FindFirstChild("UpperTorso")
+                if r8_8 then
+                  local r9_8 = (r1_7.Position - r8_8.Position).Magnitude
+                  if r9_8 <= r1_8 then
+                    r1_8 = r9_8
+                    r0_8 = r8_8
+                  end
+                end
+              end
+            end
+          end
+          if r0_8 then
+            local r4_8 = r89_0:Create(r1_7, TweenInfo.new(0.1, Enum.EasingStyle.Linear), {
+              CFrame = CFrame.new(r0_8.Position + r121_0),
+            })
+            r4_8:Play()
+            r4_8.Completed:Wait()
+          end
+          local r3_8 = r58_0.Backpack:FindFirstChild("Hunter\'s Grasp")
+          local r4_8 = r0_7:FindFirstChild("Communicate")
+          if r3_8 and r4_8 then
+            r4_8:FireServer(unpack({
+              [1] = {
+                Tool = r3_8,
+                Goal = "Console Move",
+              },
+            }))
+          end
+          r1_6 = false
+          task.delay(15, function()
+            -- line: [0, 0] id: 9
+            r3_6 = false
+          end)
+        end)
+      elseif not r3_7 then
+        r2_6 = false
+      end
+    end)
+  end,
+}
+r4_0.Tech:[r126_0](r126_0)
+r4_0.Lag:Button({
+  Title = "Copy Discord Link (join for more info)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 102
+    setclipboard("https://discord.gg/mdJKdwbKjE")
+  end,
+})
+r4_0.Lag:Section({
+  Title = "Anti Lag",
+  Icon = "heart",
+})
+r4_0.Lag:Button({
+  Title = "Destroy Spawned Stones (By ItsLouisPlayz)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 98
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/louismich4el/ItsLouisPlayz-Scripts/main/TSB%20Anti%20Lag.lua"))()
+  end,
+})
+r126_0 = "Toggle"
+r126_0 = {
+  Title = "Low Graphics",
+  Value = false,
+  Callback = function(r0_203)
+    -- line: [0, 0] id: 203
+    if r0_203 then
+      local r1_203 = true
+      local r2_203 = game
+      local r3_203 = r2_203.Workspace
+      local r4_203 = r2_203.Lighting
+      local r5_203 = r3_203.Terrain
+      sethiddenproperty(r4_203, "Technology", 2)
+      sethiddenproperty(r5_203, "Decoration", false)
+      r5_203.WaterWaveSize = 0
+      r5_203.WaterWaveSpeed = 0
+      r5_203.WaterReflectance = 0
+      r5_203.WaterTransparency = 0
+      r4_203.GlobalShadows = 0
+      r4_203.FogEnd = 9000000000
+      r4_203.Brightness = 0
+      settings().Rendering.QualityLevel = "Level01"
+      for r9_203, r10_203 in pairs(r3_203:GetDescendants()) do
+        if r10_203:IsA("BasePart") and not r10_203:IsA("MeshPart") then
+          r10_203.Material = "Plastic"
+          r10_203.Reflectance = 0
+        elseif (r10_203:IsA("Decal") or r10_203:IsA("Texture")) and r1_203 then
+          r10_203.Transparency = 1
+        elseif r10_203:IsA("ParticleEmitter") or r10_203:IsA("Trail") then
+          r10_203.Lifetime = NumberRange.new(0)
+        elseif r10_203:IsA("Explosion") then
+          r10_203.BlastPressure = 1
+          r10_203.BlastRadius = 1
+        elseif r10_203:IsA("Fire") or r10_203:IsA("SpotLight") or r10_203:IsA("Smoke") or r10_203:IsA("Sparkles") then
+          r10_203.Enabled = false
+        elseif r10_203:IsA("MeshPart") and r1_203 then
+          r10_203.Material = "Plastic"
+          r10_203.Reflectance = 0
+          r10_203.TextureID = 10385902758728956
+        elseif r10_203:IsA("SpecialMesh") and r1_203 then
+          r10_203.TextureId = 0
+        elseif r10_203:IsA("ShirtGraphic") and r1_203 then
+          r10_203.Graphic = 0
+        elseif (r10_203:IsA("Shirt") or r10_203:IsA("Pants")) and r1_203 then
+          r10_203[r10_203.ClassName .. "Template"] = 0
+        end
+      end
+      for r9_203, r10_203 in pairs(r4_203:GetChildren()) do
+        if r10_203:IsA("BlurEffect") or r10_203:IsA("SunRaysEffect") or r10_203:IsA("ColorCorrectionEffect") or r10_203:IsA("BloomEffect") or r10_203:IsA("DepthOfFieldEffect") then
+          r10_203.Enabled = false
+        end
+      end
+      r3_203.DescendantAdded:Connect(function(r0_204)
+        -- line: [0, 0] id: 204
+        task.wait()
+        if r0_204:IsA("BasePart") and not r0_204:IsA("MeshPart") then
+          r0_204.Material = "Plastic"
+          r0_204.Reflectance = 0
+        elseif r0_204:IsA("Decal") or r0_204:IsA("Texture") and r1_203 then
+          r0_204.Transparency = 1
+        elseif r0_204:IsA("ParticleEmitter") or r0_204:IsA("Trail") then
+          r0_204.Lifetime = NumberRange.new(0)
+        elseif r0_204:IsA("Explosion") then
+          r0_204.BlastPressure = 1
+          r0_204.BlastRadius = 1
+        elseif r0_204:IsA("Fire") or r0_204:IsA("SpotLight") or r0_204:IsA("Smoke") or r0_204:IsA("Sparkles") then
+          r0_204.Enabled = false
+        elseif r0_204:IsA("MeshPart") and r1_203 then
+          r0_204.Material = "Plastic"
+          r0_204.Reflectance = 0
+          r0_204.TextureID = 10385902758728956
+        elseif r0_204:IsA("SpecialMesh") and r1_203 then
+          r0_204.TextureId = 0
+        elseif r0_204:IsA("ShirtGraphic") and r1_203 then
+          r0_204.Graphic = 0
+        elseif (r0_204:IsA("Shirt") or r0_204:IsA("Pants")) and r1_203 then
+          r0_204[r0_204.ClassName .. "Template"] = 0
+        end
+      end)
+      -- close: r1_203
+    end
+  end,
+}
+r4_0.Lag:[r126_0](r126_0)
+r4_0.Lag:Section({
+  Title = "Hide Parts",
+  Icon = "package",
+})
+r126_0 = "FindFirstChild"
+r126_0 = "Map"
+local r124_0 = workspace:[r126_0](r126_0)
+local r125_0 = nil	-- notice: implicit variable refs by block#[16]
+if r124_0 then
+  r125_0 = {}
+  function r126_0(r0_206, r1_206)
+    -- line: [0, 0] id: 206
+    local r2_206 = r124_0:FindFirstChild(r0_206)
+    if r1_206 and not r2_206 and r125_0[r0_206] then
+      r125_0[r0_206].Parent = r124_0
+    elseif r2_206 then
+      r125_0[r0_206] = r2_206
+      r2_206.Parent = nil
+    end
+  end
+  local r129_0 = "Toggle"
+  r129_0 = {
+    Title = "Trees",
+    Value = true,
+    Callback = function(r0_299)
+      -- line: [0, 0] id: 299
+      r126_0("Trees", r0_299)
+    end,
+  }
+  r4_0.Lag:[r129_0](r129_0)
+  r129_0 = "Toggle"
+  r129_0 = {
+    Title = "Walls",
+    Value = true,
+    Callback = function(r0_26)
+      -- line: [0, 0] id: 26
+      r126_0("Walls", r0_26)
+    end,
+  }
+  r4_0.Lag:[r129_0](r129_0)
+  r129_0 = "Toggle"
+  r129_0 = {
+    Title = "Grass",
+    Value = true,
+    Callback = function(r0_229)
+      -- line: [0, 0] id: 229
+      r126_0("Grass", r0_229)
+      r126_0("GrassBottom", r0_229)
+    end,
+  }
+  r4_0.Lag:[r129_0](r129_0)
+  r129_0 = "Toggle"
+  r129_0 = {
+    Title = "Benches",
+    Value = true,
+    Callback = function(r0_106)
+      -- line: [0, 0] id: 106
+      r126_0("Benchs", r0_106)
+    end,
+  }
+  r4_0.Lag:[r129_0](r129_0)
+  r126_0("Trees", true)
+  r126_0("Walls", true)
+  r126_0("Grass", true)
+  r126_0("GrassBottom", true)
+  r126_0("Benches", true)
+  -- close: r125_0
+end
+r125_0 = r4_0.Anim
+r125_0:Button({
+  Title = "Copy Discord Link (join for more info)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 216
+    setclipboard("https://discord.gg/mdJKdwbKjE")
+  end,
+})
+r125_0 = r4_0.Anim
+r125_0:Section({
+  Title = "Play/Stop",
+  Icon = "eye",
+})
+r125_0 = r4_0.Anim
+local r127_0 = "Input"
+r127_0 = {
+  Title = "Play Animation",
+  Desc = "Use Anim Ids To Play Anim",
+  Value = tostring(hungerThreshold),
+  Placeholder = "Anim Id Here",
+  Numeric = true,
+  Callback = function(r0_42)
+    -- line: [0, 0] id: 42
+    local function r1_42(r0_43, r1_43)
+      -- line: [0, 0] id: 43
+      local r2_43 = Instance.new("Animation")
+      r2_43.AnimationId = "rbxassetid://" .. r1_43
+      local r3_43 = r0_43:FindFirstChildOfClass("Humanoid")
+      if r3_43 then
+        (r3_43:FindFirstChildOfClass("Animator") or Instance.new("Animator", r3_43)):LoadAnimation(r2_43):Play()
+      end
+    end
+    if tonumber(r0_42) then
+      r1_42(r59_0, r0_42)
+    end
+  end,
+}
+r125_0:[r127_0](r127_0)
+r125_0 = nil
+r126_0 = nil
+function r127_0()
+  -- line: [0, 0] id: 39
+  local r0_39 = r59_0:WaitForChild("Humanoid")
+  local r1_39 = "136370737633649"
+  local function r2_39(r0_41)
+    -- line: [0, 0] id: 41
+    if r0_41.Animation.AnimationId:match("%d+") ~= r1_39 then
+      r0_41:Stop()
+    end
+  end
+  if r125_0 then
+    r125_0:Disconnect()
+  end
+  r125_0 = r0_39.AnimationPlayed:Connect(r2_39)
+  if r126_0 then
+    r126_0:Disconnect()
+  end
+  r126_0 = r0_39.Died:Connect(function()
+    -- line: [0, 0] id: 40
+    r127_0()
+  end)
+end
+local r130_0 = "Toggle"
+r130_0 = {
+  Title = "No Animation",
+  Value = false,
+  Callback = function(r0_287)
+    -- line: [0, 0] id: 287
+    if r0_287 then
+      r127_0()
+    else
+      if r125_0 then
+        r125_0:Disconnect()
+      end
+      if r126_0 then
+        r126_0:Disconnect()
+      end
+    end
+  end,
+}
+r4_0.Anim:[r130_0](r130_0)
+r4_0.Anim:Section({
+  Title = "Characters",
+  Icon = "user",
+})
+for r132_0, r133_0 in ipairs({
+  {
+    "KJ/Gojo/Dummy",
+    "Special Animations",
+    "https://pastefy.app/qfu9PA3v/raw"
+  },
+  {
+    "Saitama",
+    "Saitama Animations",
+    "https://pastefy.app/77H3wRXO/raw"
+  },
+  {
+    "Garou",
+    "Garou Animations",
+    "https://pastefy.app/VY6onISD/raw"
+  },
+  {
+    "Genos",
+    "Genos Animations",
+    "https://pastefy.app/0EPn6woL/raw"
+  },
+  {
+    "Sonic",
+    "Sonic Animations",
+    "https://pastefy.app/KaiJDJHg/raw"
+  },
+  {
+    "MetalBat",
+    "MetalBat Animations",
+    "https://pastefy.app/mObEgCqc/raw"
+  },
+  {
+    "Atomic Samurai",
+    "Atomic Samurai Animations",
+    "https://pastefy.app/9bllab1z/raw"
+  },
+  {
+    "Tatsumaki",
+    "Tatsumaki Animations",
+    "https://pastefy.app/qhJrd1zw/raw"
+  },
+  {
+    "Suiryu",
+    "Suiryu Animations",
+    "https://pastefy.app/AKyKbIt0/raw"
+  }
+}) do
+  local r136_0 = {
+    Title = r133_0[2],
+    Locked = false,
+  }
+  local function r137_0()
+    -- line: [0, 0] id: 51
+    loadstring(game:HttpGet(r133_0[3]))()
+  end
+  r136_0.Callback = r137_0
+  r4_0.Anim:Button(r136_0)
+  -- close: r132_0
+end
+r4_0.Fight:Button({
+  Title = "Copy Discord Link (join for more info)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 291
+    setclipboard("https://discord.gg/mdJKdwbKjE")
+  end,
+})
+r4_0.Fight:Section({
+  Title = "Farm",
+  Icon = "map",
+})
+r4_0.Fight:Button({
+  Title = "TrashCan Kill Farmer",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 290
+    getgenv().Settings = {
+      TargetHealth = 50,
+      CharacterHeight = 8,
+      ResetStreak = false,
+      AntiDC = false,
+    }
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/DiosDi/VexonHub/refs/heads/main/TrashCan-Farm"))()
+  end,
+})
+r4_0.Fight:Button({
+  Title = "Auto Get Emotes",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 192
+    loadstring(game:HttpGet("https://pastefy.app/bqVKWKRG/raw"))()
+  end,
+})
+local r131_0 = "Toggle"
+r131_0 = {
+  Title = "Auto Reset Streak",
+}
+local r133_0 = false
+r131_0.Value = r133_0
+function r131_0.Callback(r0_115)
+  -- line: [0, 0] id: 115
+  local r1_115 = getgenv()
+  r1_115.ResetStreak = r0_115
+  if r0_115 then
+    r1_115 = game:GetService("Players").LocalPlayer
+    local function r2_115()
+      -- line: [0, 0] id: 116
+      if not getgenv().ResetStreak then
+        return 
+      end
+      local r0_116 = workspace:FindFirstChild("Live")
+      if not r0_116 then
+        return 
+      end
+      local r1_116 = r0_116:FindFirstChild(r1_115.Name)
+      if not r1_116 then
+        return 
+      end
+      if (r1_116:GetAttribute("CurrentStreak") or 0) >= 9 then
+        local r3_116 = r1_115.Character
+        local r4_116 = r3_116 and r3_116:FindFirstChildOfClass("Humanoid")
+        if r4_116 then
+          r4_116.Health = 0
+        end
+      end
+    end
+    task.spawn(function()
+      -- line: [0, 0] id: 117
+      while getgenv().ResetStreak do
+        r2_115()
+        task.wait(1)
+      end
+    end)
+    -- close: r1_115
+  else
+    r1_115 = getgenv
+    r1_115 = r1_115()
+    r1_115.ResetStreak = false
+  end
+end
+r4_0.Fight:[r131_0](r131_0)
+r131_0 = "Toggle"
+r131_0 = {
+  Title = "Auto Farm Lowest Health",
+}
+r133_0 = false
+r131_0.Value = r133_0
+function r131_0.Callback(r0_321)
+  -- line: [0, 0] id: 321
+  getgenv().AutoKillLowestHealthPlr = r0_321
+  getgenv().TeleportDistance = 5
+  local r1_321 = nil
+  local function r2_321()
+    -- line: [0, 0] id: 328
+    local r0_328 = r15_0.Character
+    if r0_328 then
+      r1_321 = r0_328:FindFirstChild("HumanoidRootPart")
+      if not r1_321 then
+        r0_328.ChildAdded:Wait()
+        r1_321 = r0_328:WaitForChild("HumanoidRootPart")
+      end
+    end
+  end
+  local function r3_321(r0_322)
+    -- line: [0, 0] id: 322
+    return game.Players:GetPlayerFromCharacter(r0_322) ~= nil
+  end
+  local function r4_321()
+    -- line: [0, 0] id: 323
+    local r0_323 = math.huge
+    local r1_323 = nil
+    for r5_323, r6_323 in pairs(game.Workspace.Live:GetChildren()) do
+      if r3_321(r6_323) then
+        local r7_323 = r6_323:FindFirstChildOfClass("Humanoid")
+        local r8_323 = r6_323:FindFirstChild("HumanoidRootPart")
+        if r7_323 and r8_323 and r6_323 ~= r15_0.Character and 0 < r7_323.Health and r7_323.Health <= 35 then
+          r0_323 = r7_323.Health
+          r1_323 = r8_323
+        end
+      end
+    end
+    return r1_323
+  end
+  task.spawn(function()
+    -- line: [0, 0] id: 325
+    while getgenv().AutoKillLowestHealthPlr == true do
+      pcall(function()
+        -- line: [0, 0] id: 326
+        r2_321()
+        if r1_321 then
+          local r0_326 = r4_321()
+          if r0_326 then
+            r15_0.Character:SetPrimaryPartCFrame(CFrame.new(r0_326.Position - Vector3.new(0, r0_326.Size.Y / 2, 0) - r0_326.CFrame.LookVector * getgenv().TeleportDistance + Vector3.new(0, -6, 0), r0_326.Position - Vector3.new(0, r0_326.Size.Y / 2, 0)))
+            if not workspace.Live:FindFirstChild(r0_326.Parent.Name):FindFirstChild("RagdollSim") and not workspace.Live:FindFirstChild(r0_326.Parent.Name):FindFirstChild("AbsoluteImmortal") then
+              task.spawn(function()
+                -- line: [0, 0] id: 327
+                game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack({
+                  [1] = {
+                    Goal = "LeftClick",
+                    Mobile = true,
+                  },
+                }))
+                game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack({
+                  [1] = {
+                    Goal = "LeftClickRelease",
+                    Mobile = true,
+                  },
+                }))
+              end)
+              for r4_326, r5_326 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if r5_326:IsA("Tool") and r5_326.Name ~= "Prey\'s Peril" and r5_326.Name ~= "Split Second Counter" then
+                  game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(r5_326)
+                  r5_326:Activate()
+                  game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):UnequipTools()
+                end
+              end
+            end
+          else
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150, 705, 30)
+          end
+        end
+      end)
+      task.wait(0.015)
+    end
+  end)
+  r15_0.CharacterAdded:Connect(function()
+    -- line: [0, 0] id: 324
+    task.wait(1.5)
+    r2_321()
+  end)
+end
+r4_0.Fight:[r131_0](r131_0)
+r131_0 = "Toggle"
+r131_0 = {
+  Title = "Auto Farm Nearest",
+}
+r133_0 = false
+r131_0.Value = r133_0
+function r131_0.Callback(r0_234)
+  -- line: [0, 0] id: 234
+  getgenv().AutoKillNearestPlr = r0_234
+  getgenv().TeleportDistance = 5
+  task.spawn(function()
+    -- line: [0, 0] id: 236
+    if getgenv().AutoKillNearestPlr == false then
+      game.Players.LocalPlayer.Character.Humanoid.RootPart.CFrame = game.Players.LocalPlayer.Character.Humanoid.RootPart.CFrame * CFrame.new(0, 20, -20)
+    end
+  end)
+  local r1_234 = nil
+  local function r2_234()
+    -- line: [0, 0] id: 237
+    local r0_237 = r15_0.Character
+    if r0_237 then
+      r1_234 = r0_237:FindFirstChild("HumanoidRootPart")
+      if not r1_234 then
+        r0_237.ChildAdded:Wait()
+        r1_234 = r0_237:WaitForChild("HumanoidRootPart")
+      end
+    end
+  end
+  local function r3_234(r0_238)
+    -- line: [0, 0] id: 238
+    return game.Players:GetPlayerFromCharacter(r0_238) ~= nil
+  end
+  local function r4_234()
+    -- line: [0, 0] id: 239
+    local r0_239 = math.huge
+    local r1_239 = nil
+    for r5_239, r6_239 in pairs(game.Workspace.Live:GetChildren()) do
+      if r3_234(r6_239) then
+        local r7_239 = r6_239:FindFirstChildOfClass("Humanoid")
+        local r8_239 = r6_239:FindFirstChild("HumanoidRootPart")
+        if r7_239 and r8_239 and r6_239 ~= r15_0.Character and 0 < r7_239.Health then
+          local r9_239 = (r1_234.Position - r8_239.Position).magnitude
+          if r9_239 < r0_239 then
+            r0_239 = r9_239
+            r1_239 = r8_239
+          end
+        end
+      end
+    end
+    return r1_239
+  end
+  task.spawn(function()
+    -- line: [0, 0] id: 240
+    while getgenv().AutoKillNearestPlr == true do
+      pcall(function()
+        -- line: [0, 0] id: 241
+        r2_234()
+        if r1_234 then
+          local r0_241 = r4_234()
+          if r0_241 then
+            r15_0.Character:SetPrimaryPartCFrame(CFrame.new(r0_241.Position - Vector3.new(0, r0_241.Size.Y / 2, 0) - r0_241.CFrame.LookVector * getgenv().TeleportDistance + Vector3.new(0, -6, 0), r0_241.Position - Vector3.new(0, r0_241.Size.Y / 2, 0)))
+            if not workspace.Live:FindFirstChild(r0_241.Parent.Name):FindFirstChild("RagdollSim") and not workspace.Live:FindFirstChild(r0_241.Parent.Name):FindFirstChild("AbsoluteImmortal") then
+              task.spawn(function()
+                -- line: [0, 0] id: 242
+                game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack({
+                  [1] = {
+                    Goal = "LeftClick",
+                    Mobile = true,
+                  },
+                }))
+                game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack({
+                  [1] = {
+                    Goal = "LeftClickRelease",
+                    Mobile = true,
+                  },
+                }))
+              end)
+              for r4_241, r5_241 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if r5_241:IsA("Tool") and r5_241.Name ~= "Prey\'s Peril" and r5_241.Name ~= "Split Second Counter" then
+                  game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(r5_241)
+                  r5_241:Activate()
+                  game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):UnequipTools()
+                end
+              end
+            end
+          end
+        end
+      end)
+      task.wait(0.015)
+    end
+  end)
+  r15_0.CharacterAdded:Connect(function()
+    -- line: [0, 0] id: 235
+    task.wait(1.5)
+    r2_234()
+  end)
+end
+r4_0.Fight:[r131_0](r131_0)
+r131_0 = "Toggle"
+r131_0 = {
+  Title = "Auto Give Kills",
+}
+r133_0 = false
+r131_0.Value = r133_0
+function r131_0.Callback(r0_275)
+  -- line: [0, 0] id: 275
+  getgenv().AutoGiveKills = r0_275
+  task.spawn(function()
+    -- line: [0, 0] id: 276
+    while getgenv().AutoGiveKills == true do
+      pcall(function()
+        -- line: [0, 0] id: 277
+        if workspace.Live[game.Players.LocalPlayer.Name]:FindFirstChild("Humanoid").MaxHealth ~= workspace.Live[game.Players.LocalPlayer.Name]:FindFirstChild("Humanoid").Health then
+          game.Players.LocalPlayer.Character.Humanoid.Health = 0
+        end
+      end)
+      task.wait(0.35)
+    end
+  end)
+end
+r4_0.Fight:[r131_0](r131_0)
+r4_0.Fight:Section({
+  Title = "Fighting",
+  Icon = "sword",
+})
+getgenv().CamKey = "Z"
+getgenv().CharacterKey = "X"
+local r129_0 = false
+r130_0 = false
+r131_0 = nil
+local function r132_0()
+  -- line: [0, 0] id: 219
+  local r0_219 = math.huge
+  local r1_219 = nil
+  local r2_219 = Vector2.new(workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2)
+  for r6_219, r7_219 in ipairs(game:GetService("Players"):GetPlayers()) do
+    if r7_219 ~= game:GetService("Players").LocalPlayer and r7_219.Character and r7_219.Character:FindFirstChild("HumanoidRootPart") then
+      local r8_219 = r7_219.Character:FindFirstChild("Humanoid")
+      if r8_219 and 0 < r8_219.Health then
+        local r9_219 = r7_219.Character.HumanoidRootPart
+        local r10_219, r11_219 = workspace.CurrentCamera:WorldToViewportPoint(r9_219.Position)
+        if r11_219 then
+          local r12_219 = (r2_219 - Vector2.new(r10_219.X, r10_219.Y)).Magnitude
+          if r12_219 < r0_219 then
+            r0_219 = r12_219
+            r1_219 = r9_219
+          end
+        end
+      end
+    end
+  end
+  return r1_219
+end
+function r133_0()
+  -- line: [0, 0] id: 175
+  if r129_0 or r130_0 then
+    r131_0 = r132_0()
+  else
+    r131_0 = nil
+  end
+end
+game:GetService("RunService").Heartbeat:Connect(function()
+  -- line: [0, 0] id: 93
+  if not r131_0 or not r131_0.Parent then
+    return 
+  end
+  local r0_93 = r131_0.Parent:FindFirstChild("Humanoid")
+  if not r0_93 or r0_93.Health <= 0 then
+    r131_0 = nil
+    return 
+  end
+  local r1_93 = game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+  if not r1_93 then
+    return 
+  end
+  local r3_93 = r131_0.Position + r131_0.Velocity * 0.016
+  if r129_0 then
+    workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.Position, r3_93)
+  end
+  if r130_0 then
+    r1_93.CFrame = CFrame.new(r1_93.Position, Vector3.new(r3_93.X, r1_93.Position.Y, r3_93.Z))
+  end
+end)
+game:GetService("UserInputService").InputBegan:Connect(function(r0_154, r1_154)
+  -- line: [0, 0] id: 154
+  if r1_154 then
+    return 
+  end
+  if r0_154.UserInputType == Enum.UserInputType.Keyboard then
+    local r2_154 = r0_154.KeyCode.Name
+    if r2_154 == getgenv().CamKey then
+      r129_0 = not r129_0
+      r130_0 = false
+      r133_0()
+    elseif r2_154 == getgenv().CharacterKey then
+      r130_0 = not r130_0
+      r129_0 = false
+      r133_0()
+    end
+  end
+end)
+local r136_0 = "Toggle"
+r136_0 = {
+  Title = "AimLock Cam",
+  Value = false,
+  Callback = function(r0_258)
+    -- line: [0, 0] id: 258
+    r129_0 = r0_258
+    r130_0 = false
+    r133_0()
+  end,
+}
+r4_0.Fight:[r136_0](r136_0)
+r136_0 = "Toggle"
+r136_0 = {
+  Title = "AimLock Character",
+  Value = false,
+  Callback = function(r0_195)
+    -- line: [0, 0] id: 195
+    r130_0 = r0_195
+    r129_0 = false
+    r133_0()
+  end,
+}
+r4_0.Fight:[r136_0](r136_0)
+r136_0 = "Toggle"
+r136_0 = {
+  Title = "M1 Click Reach",
+  Value = false,
+  Callback = function(r0_178)
+    -- line: [0, 0] id: 178
+    getgenv().AutoTeleportPunching = r0_178
+    getgenv().DetectionDistance = 999999
+    getgenv().TeleportDistance = 3
+    local r1_178 = nil
+    local function r2_178()
+      -- line: [0, 0] id: 180
+      local r0_180 = r15_0.Character
+      if r0_180 then
+        r1_178 = r0_180:FindFirstChild("HumanoidRootPart")
+        if not r1_178 then
+          r0_180.ChildAdded:Wait()
+          r1_178 = r0_180:WaitForChild("HumanoidRootPart")
+        end
+      end
+    end
+    local function r3_178()
+      -- line: [0, 0] id: 183
+      local r0_183 = getgenv().DetectionDistance
+      local r1_183 = nil
+      for r5_183, r6_183 in pairs(game.Workspace.Live:GetChildren()) do
+        local r7_183 = r6_183:FindFirstChildOfClass("Humanoid")
+        local r8_183 = r6_183:FindFirstChild("HumanoidRootPart")
+        if r7_183 and r8_183 and r6_183 ~= r15_0.Character and 0 < r7_183.Health then
+          local r9_183 = (r1_178.Position - r8_183.Position).magnitude
+          if r9_183 < r0_183 then
+            r0_183 = r9_183
+            r1_183 = r8_183
+          end
+        end
+      end
+      return r1_183
+    end
+    task.spawn(function()
+      -- line: [0, 0] id: 181
+      while getgenv().AutoTeleportPunching == true do
+        pcall(function()
+          -- line: [0, 0] id: 182
+          r2_178()
+          if workspace.Live[game.Players.LocalPlayer.Name]:FindFirstChild("M1ing") and r1_178 then
+            local r0_182 = r3_178()
+            if r0_182 then
+              local r1_182 = r0_182.Position + -r0_182.CFrame.LookVector * getgenv().TeleportDistance
+              r15_0.Character:SetPrimaryPartCFrame(CFrame.new(r1_182, r1_182 + (r0_182.Position - r1_182).unit))
+            end
+          end
+        end)
+        task.wait(0.015)
+      end
+    end)
+    r15_0.CharacterAdded:Connect(function()
+      -- line: [0, 0] id: 179
+      task.wait(3)
+      r2_178()
+    end)
+  end,
+}
+r4_0.Fight:[r136_0](r136_0)
+local r134_0 = game:GetService("Players").LocalPlayer
+local r135_0 = false
+function r136_0()
+  -- line: [0, 0] id: 152
+  task.spawn(function()
+    -- line: [0, 0] id: 153
+    while r135_0 do
+      local r0_153 = r134_0.Character
+      if r0_153 then
+        local r1_153 = r0_153:FindFirstChild("HumanoidRootPart")
+        if r1_153 then
+          for r5_153, r6_153 in pairs(game:GetService("Players"):GetPlayers()) do
+            if r6_153 ~= r134_0 and r6_153.Character and r6_153.Character:FindFirstChild("HumanoidRootPart") and (r1_153.Position - r6_153.Character.HumanoidRootPart.Position).Magnitude < 10 then
+              r134_0.Character.Communicate:FireServer(unpack({
+                [1] = {
+                  Goal = "LeftClick",
+                  Mobile = true,
+                },
+              }))
+              task.wait(0.1)
+              r134_0.Character.Communicate:FireServer(unpack({
+                [1] = {
+                  Goal = "LeftClickRelease",
+                  Mobile = true,
+                },
+              }))
+            end
+          end
+        end
+      end
+      task.wait(0.1)
+    end
+  end)
+end
+local r139_0 = "Toggle"
+r139_0 = {
+  Title = "Auto Hit",
+  Value = false,
+  Callback = function(r0_315)
+    -- line: [0, 0] id: 315
+    r135_0 = r0_315
+    if r0_315 then
+      r136_0()
+    end
+  end,
+}
+r4_0.Fight:[r139_0](r139_0)
+r134_0.CharacterAdded:Connect(function()
+  -- line: [0, 0] id: 59
+  if r135_0 then
+    task.wait(1)
+    r136_0()
+  end
+end)
+r139_0 = "Toggle"
+r139_0 = {
+  Title = "Auto Dodge Players",
+  Value = false,
+  Callback = function(r0_158)
+    -- line: [0, 0] id: 158
+    getgenv().AutoDodging = r0_158
+    local r1_158 = {
+      NormalDash = {
+        10479335397
+      },
+      WeaponDash = {
+        13380255751
+      },
+    }
+    local r2_158 = {
+      NormalPunch = {
+        10468665991
+      },
+      ConsecutivePunches = {
+        10466974800
+      },
+      Shove = {
+        10471336737
+      },
+      Uppercut = {
+        12510170988
+      },
+    }
+    local r3_158 = {
+      FlowingWater = {
+        12272894215
+      },
+      LethalWhirlwindStream = {
+        12296882427
+      },
+      HunterGrasp = {
+        12307656616
+      },
+    }
+    local r4_158 = {}
+    for r8_158, r9_158 in pairs({
+      r1_158,
+      r2_158,
+      r3_158
+    }) do
+      for r13_158, r14_158 in pairs(r9_158) do
+        for r18_158, r19_158 in pairs(r14_158) do
+          table.insert(r4_158, r19_158)
+        end
+      end
+    end
+    task.spawn(function()
+      -- line: [0, 0] id: 159
+      local r0_159 = nil	-- notice: implicit variable refs by block#[0]
+      r0_159 = game:GetService("RunService").RenderStepped:Connect(function()
+        -- line: [0, 0] id: 160
+        if getgenv().AutoDodging == true then
+          pcall(function()
+            -- line: [0, 0] id: 161
+            for r3_161, r4_161 in ipairs(workspace.Live:GetChildren()) do
+              if r4_161:IsA("Model") and r4_161:FindFirstChild("Head") and r4_161.Head:IsA("Part") and r4_161.Head.Name == "Head" and r4_161.Head ~= game.Players.LocalPlayer.Character.Head and (r4_161.Head.Position - game.Players.LocalPlayer.Character.Head.Position).magnitude <= 25 and r4_161:FindFirstChildOfClass("Humanoid") and 0 < r4_161:FindFirstChildOfClass("Humanoid").Health then
+                local r5_161 = false
+                for r9_161, r10_161 in pairs(r4_161:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks()) do
+                  if table.find(r4_158, tonumber(r10_161.Animation.AnimationId:match("%d+"))) then
+                    r5_161 = true
+                    break
+                  end
+                end
+                if r4_161:FindFirstChild("M1ing") or r5_161 then
+                  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(r4_161.Head.Position + r4_161.Head.CFrame.lookVector * -5 + Vector3.new(0, 0, 0), r4_161.Head.Position)
+                end
+              end
+            end
+          end)
+        else
+          r0_159:Disconnect()
+        end
+      end)
+    end)
+  end,
+}
+r4_0.Fight:[r139_0](r139_0)
+r4_0.Fight:Button({
+  Title = "Easy Kill Player panel",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 76
+    loadstring(game:HttpGet("https://pastefy.app/7qmTI84P/raw"))()
+  end,
+})
+local r137_0 = game:GetService("StarterGui")
+local r138_0 = game:GetService("Players")
+r139_0 = game:GetService("RunService")
+local r140_0 = r138_0.LocalPlayer
+local r141_0 = workspace.CurrentCamera
+local r142_0 = r141_0.CameraSubject
+local r143_0 = nil
+local r144_0 = nil
+local r145_0 = nil
+local r146_0 = nil
+local r147_0 = nil
+local r148_0 = {}
+local r149_0 = false
+local r150_0 = {
+  teleport = false,
+  fling = false,
+  view = false,
+  aimLockCam = false,
+  aimLockChar = false,
+  orbit = false,
+  notifyOnDeath = false,
+}
+local function r151_0(r0_283, r1_283, r2_283, r3_283)
+  -- line: [0, 0] id: 283
+  local r4_283 = r137_0
+  local r6_283 = "SendNotification"
+  local r7_283 = {
+    Title = r0_283 or "VexonHub",
+    Text = r1_283,
+    Icon = r2_283 or "rbxassetid://84519376661277",
+    Duration = r3_283 or 5,
+  }
+  r4_283:SetCore(r6_283, r7_283)
+end
+local function r152_0(r0_11)
+  -- line: [0, 0] id: 11
+  local r1_11 = r0_11 and r0_11.Character
+  local r2_11 = r1_11 and r1_11:FindFirstChild("Head")
+  if not r2_11 then
+    return 
+  end
+  r141_0.CFrame = CFrame.new(r141_0.CFrame.Position, r2_11.Position)
+end
+local function r153_0(r0_122)
+  -- line: [0, 0] id: 122
+  local r1_122 = r140_0.Character
+  local r2_122 = r1_122 and r1_122:FindFirstChild("HumanoidRootPart")
+  local r3_122 = r0_122 and r0_122.Character
+  local r4_122 = r3_122 and r3_122:FindFirstChild("HumanoidRootPart")
+  if r2_122 and r4_122 then
+    r2_122.CFrame = CFrame.new(r2_122.Position, r4_122.Position)
+  end
+end
+local function r154_0()
+  -- line: [0, 0] id: 308
+  if r144_0 then
+    r144_0:Disconnect()
+    r144_0 = nil
+  end
+  if r150_0.notifyOnDeath and r143_0 then
+    local r0_308 = r143_0.Character or r143_0.CharacterAdded:Wait()
+    local r1_308 = r0_308 and r0_308:FindFirstChildOfClass("Humanoid")
+    if r1_308 then
+      r144_0 = r1_308.Died:Connect(function()
+        -- line: [0, 0] id: 309
+        r151_0("VexonHub", r143_0.DisplayName .. " Died")
+      end)
+    end
+  end
+end
+local function r155_0(r0_49)
+  -- line: [0, 0] id: 49
+  if r144_0 then
+    r144_0:Disconnect()
+    r144_0 = nil
+  end
+  r143_0 = nil
+  if not r0_49 or r0_49 == "" then
+    r151_0("VexonHub", "No One Selected")
+    return 
+  end
+  local r1_49 = nil
+  local r2_49 = string.lower(r0_49)
+  for r6_49, r7_49 in ipairs(r138_0:GetPlayers()) do
+    if string.find(string.lower(r7_49.Name), r2_49, 1, true) or string.find(string.lower(r7_49.DisplayName), r2_49, 1, true) then
+      r1_49 = r7_49
+      break
+    end
+  end
+  if r1_49 then
+    r143_0 = r1_49
+    r151_0("VexonHub", "Selected: " .. r1_49.DisplayName, "https://www.roblox.com/headshot-thumbnail/image?userId=" .. r1_49.UserId .. "&width=420&height=420&format=png", 10)
+    r154_0()
+  else
+    r151_0("VexonHub", "Player Not Found...")
+  end
+end
+function createEspForPlayer(r0_57)
+  -- line: [0, 0] id: 57
+  local r1_57 = r0_57.Character and r0_57.Character:FindFirstChild("Head")
+  if not r1_57 then
+    return 
+  end
+  local r2_57 = Instance.new("BillboardGui")
+  r2_57.Name = "ESP_Billboard"
+  r2_57.Size = UDim2.new(0, 200, 0, 50)
+  r2_57.Adornee = r1_57
+  r2_57.AlwaysOnTop = true
+  local r3_57 = Instance.new("Frame")
+  r3_57.Size = UDim2.new(1, 0, 1, 0)
+  r3_57.BackgroundColor3 = Color3.new(0.8, 0, 0)
+  r3_57.BackgroundTransparency = 0.6
+  r3_57.Parent = r2_57
+  local r4_57 = Instance.new("UICorner")
+  r4_57.CornerRadius = UDim.new(0, 8)
+  r4_57.Parent = r3_57
+  local r5_57 = Instance.new("TextLabel")
+  r5_57.Size = UDim2.new(1, 0, 1, 0)
+  r5_57.BackgroundTransparency = 1
+  r5_57.TextColor3 = Color3.new(1, 1, 1)
+  r5_57.Text = r0_57.DisplayName
+  r5_57.Font = Enum.Font.SourceSansBold
+  r5_57.TextSize = 16
+  r5_57.Parent = r3_57
+  r148_0[r0_57] = {
+    billboard = r2_57,
+  }
+  r2_57.Parent = r140_0.PlayerGui
+end
+function updateEspForPlayer(r0_213)
+  -- line: [0, 0] id: 213
+  local r1_213 = r148_0[r0_213]
+  if not r1_213 or not r1_213.billboard then
+    return 
+  end
+  local r2_213 = r0_213.Character
+  local r3_213 = r2_213 and r2_213:FindFirstChild("Head")
+  if r3_213 and r1_213.billboard.Adornee ~= r3_213 then
+    r1_213.billboard.Adornee = r3_213
+  end
+end
+function removeEspForPlayer(r0_68)
+  -- line: [0, 0] id: 68
+  if r148_0[r0_68] then
+    if r148_0[r0_68].billboard then
+      r148_0[r0_68].billboard:Destroy()
+    end
+    r148_0[r0_68] = nil
+  end
+end
+function runEspLoop()
+  -- line: [0, 0] id: 289
+  for r3_289, r4_289 in ipairs(r138_0:GetPlayers()) do
+    if r4_289 ~= r140_0 and r4_289.Character and r4_289.Character:FindFirstChild("Head") then
+      if not r148_0[r4_289] then
+        createEspForPlayer(r4_289)
+      else
+        updateEspForPlayer(r4_289)
+      end
+    elseif r148_0[r4_289] then
+      removeEspForPlayer(r4_289)
+    end
+  end
+end
+r4_0.Fling:Button({
+  Title = "Copy Discord Link",
+  Callback = function()
+    -- line: [0, 0] id: 18
+    setclipboard("https://discord.gg/mdJKdwbKjE")
+    r151_0("VexonHub", "Discord link copied to clipboard!")
+  end,
+})
+r4_0.Fling:Section({
+  Title = "Player Selection",
+  Icon = "eye",
+})
+local r158_0 = "Input"
+r158_0 = {
+  Title = "Select Player",
+  Desc = "Enter Player Name To Select Target",
+  Placeholder = "PlayerName",
+  Callback = function(r0_319)
+    -- line: [0, 0] id: 319
+    r155_0(r0_319)
+  end,
+}
+r4_0.Fling:[r158_0](r158_0)
+r4_0.Fling:Section({
+  Title = "Player Actions",
+})
+r4_0.Fling:Button({
+  Title = "Teleport to Player",
+  Callback = function()
+    -- line: [0, 0] id: 137
+    if not r143_0 then
+      r151_0("VexonHub", "No One Selected")
+      return 
+    end
+    local r0_137 = r140_0.Character
+    local r1_137 = r0_137 and r0_137:FindFirstChild("HumanoidRootPart")
+    local r2_137 = r143_0.Character
+    local r3_137 = r2_137 and r2_137:FindFirstChild("HumanoidRootPart")
+    if r1_137 and r3_137 then
+      r1_137.CFrame = r3_137.CFrame
+    else
+      r151_0("VexonHub", "Could not find character to teleport.")
+    end
+  end,
+})
+r158_0 = "Toggle"
+r158_0 = {
+  Title = "Loop Teleport",
+  Value = r150_0.teleport,
+  Callback = function(r0_311)
+    -- line: [0, 0] id: 311
+    r150_0.teleport = r0_311
+    if not r0_311 then
+      return 
+    end
+    if not r143_0 then
+      r151_0("VexonHub", "No One Selected")
+      r150_0.teleport = false
+      return 
+    end
+    task.spawn(function()
+      -- line: [0, 0] id: 312
+      while r150_0.teleport do
+        local r0_312 = r143_0
+        if r0_312 then
+          r0_312 = r143_0.Parent
+          if r0_312 then
+            r0_312 = r140_0.Character
+            local r1_312 = r0_312 and r0_312:FindFirstChild("HumanoidRootPart")
+            local r2_312 = r143_0.Character
+            local r3_312 = r2_312 and r2_312:FindFirstChild("HumanoidRootPart")
+            if r1_312 and r3_312 then
+              r1_312.CFrame = r3_312.CFrame
+              task.wait()
+            else
+              r150_0.teleport = false
+              break
+            end
+          else
+            break
+          end
+        else
+          break
+        end
+      end
+    end)
+  end,
+}
+r4_0.Fling:[r158_0](r158_0)
+r4_0.Fling:Button({
+  Title = "Fling Player",
+  Callback = function()
+    -- line: [0, 0] id: 211
+    if not r143_0 then
+      r151_0("VexonHub", "No One Selected")
+      return 
+    end
+    miniFling(r143_0)
+  end,
+})
+r158_0 = "Toggle"
+r158_0 = {
+  Title = "Loop Fling",
+  Value = r150_0.fling,
+  Callback = function(r0_254)
+    -- line: [0, 0] id: 254
+    r150_0.fling = r0_254
+    if not r0_254 then
+      return 
+    end
+    if not r143_0 then
+      r151_0("VexonHub", "No One Selected")
+      r150_0.fling = false
+      return 
+    end
+    task.spawn(function()
+      -- line: [0, 0] id: 255
+      while r150_0.fling do
+        local r0_255 = r143_0
+        if r0_255 then
+          r0_255 = r143_0.Parent
+          if r0_255 then
+            miniFling(r143_0)
+            task.wait(0.5)
+          else
+            break
+          end
+        else
+          break
+        end
+      end
+    end)
+  end,
+}
+r4_0.Fling:[r158_0](r158_0)
+r4_0.Fling:Button({
+  Title = "View Player (3 sec)",
+  Callback = function()
+    -- line: [0, 0] id: 156
+    if not r143_0 then
+      r151_0("VexonHub", "No One Selected")
+      return 
+    end
+    local r0_156 = r143_0.Character
+    local r1_156 = r0_156 and r0_156:FindFirstChildOfClass("Humanoid")
+    if r1_156 then
+      r141_0.CameraSubject = r1_156
+      task.delay(3, function()
+        -- line: [0, 0] id: 157
+        if r141_0.CameraSubject == r1_156 then
+          r141_0.CameraSubject = r142_0
+        end
+      end)
+    else
+      r151_0("VexonHub", "Could not find the player\'s character to view.")
+    end
+  end,
+})
+r158_0 = "Toggle"
+r158_0 = {
+  Title = "Loop View",
+  Value = r150_0.view,
+  Callback = function(r0_60)
+    -- line: [0, 0] id: 60
+    r150_0.view = r0_60
+    if not r0_60 then
+      r141_0.CameraSubject = r142_0
+      return 
+    end
+    if not r143_0 then
+      r151_0("VexonHub", "No One Selected")
+      r150_0.view = false
+      return 
+    end
+    task.spawn(function()
+      -- line: [0, 0] id: 61
+      while r150_0.view do
+        local r0_61 = r143_0
+        if r0_61 then
+          r0_61 = r143_0.Parent
+          if r0_61 then
+            r0_61 = r143_0.Character
+            local r1_61 = r0_61 and r0_61:FindFirstChildOfClass("Humanoid")
+            if r1_61 then
+              r141_0.CameraSubject = r1_61
+            end
+            task.wait(0.1)
+          else
+            break
+          end
+        else
+          break
+        end
+      end
+      r141_0.CameraSubject = r142_0
+    end)
+  end,
+}
+r4_0.Fling:[r158_0](r158_0)
+r158_0 = "Toggle"
+r158_0 = {
+  Title = "AimLock (Camera)",
+  Value = r150_0.aimLockCam,
+  Callback = function(r0_112)
+    -- line: [0, 0] id: 112
+    r150_0.aimLockCam = r0_112
+    if not r0_112 then
+      return 
+    end
+    if not r143_0 then
+      r151_0("VexonHub", "No One Selected")
+      r150_0.aimLockCam = false
+      return 
+    end
+    task.spawn(function()
+      -- line: [0, 0] id: 113
+      while r150_0.aimLockCam do
+        local r0_113 = r143_0
+        if r0_113 then
+          r0_113 = r143_0.Parent
+          if r0_113 then
+            r152_0(r143_0)
+            r139_0.RenderStepped:Wait()
+          else
+            break
+          end
+        else
+          break
+        end
+      end
+    end)
+  end,
+}
+r4_0.Fling:[r158_0](r158_0)
+r158_0 = "Toggle"
+r158_0 = {
+  Title = "AimLock (Character)",
+  Value = r150_0.aimLockChar,
+  Callback = function(r0_165)
+    -- line: [0, 0] id: 165
+    r150_0.aimLockChar = r0_165
+    if not r0_165 then
+      return 
+    end
+    if not r143_0 then
+      r151_0("VexonHub", "No One Selected")
+      r150_0.aimLockChar = false
+      return 
+    end
+    task.spawn(function()
+      -- line: [0, 0] id: 166
+      while r150_0.aimLockChar do
+        local r0_166 = r143_0
+        if r0_166 then
+          r0_166 = r143_0.Parent
+          if r0_166 then
+            r153_0(r143_0)
+            r139_0.Heartbeat:Wait()
+          else
+            break
+          end
+        else
+          break
+        end
+      end
+    end)
+  end,
+}
+r4_0.Fling:[r158_0](r158_0)
+r158_0 = "Toggle"
+r158_0 = {
+  Title = "ESP",
+  Value = r149_0,
+  Callback = function(r0_314)
+    -- line: [0, 0] id: 314
+    r149_0 = r0_314
+    if r149_0 then
+      if not r147_0 then
+        r147_0 = r139_0.RenderStepped:Connect(runEspLoop)
+      end
+    else
+      if r147_0 then
+        r147_0:Disconnect()
+        r147_0 = nil
+      end
+      for r4_314, r5_314 in pairs(r148_0) do
+        removeEspForPlayer(r4_314)
+      end
+      table.clear(r148_0)
+    end
+  end,
+}
+r4_0.Fling:[r158_0](r158_0)
+r158_0 = "Toggle"
+r158_0 = {
+  Title = "Orbit Player",
+  Value = r150_0.orbit,
+  Callback = function(r0_335)
+    -- line: [0, 0] id: 335
+    r150_0.orbit = r0_335
+    if r145_0 then
+      r145_0:Disconnect()
+      r145_0 = nil
+    end
+    if r146_0 then
+      r146_0:Disconnect()
+      r146_0 = nil
+    end
+    if not r0_335 then
+      return 
+    end
+    if not r143_0 then
+      r151_0("VexonHub", "No One Selected")
+      r150_0.orbit = false
+      return 
+    end
+    task.spawn(function()
+      -- line: [0, 0] id: 336
+      local r0_336 = 0
+      local r1_336 = 8
+      local r2_336 = 10
+      r145_0 = r139_0.Heartbeat:Connect(function()
+        -- line: [0, 0] id: 337
+        if not r150_0.orbit or not r143_0 or not r143_0.Parent then
+          if r145_0 then
+            r145_0:Disconnect()
+            r145_0 = nil
+          end
+          if r146_0 then
+            r146_0:Disconnect()
+            r146_0 = nil
+          end
+          return 
+        end
+        local r0_337 = r140_0.Character
+        local r1_337 = r0_337 and r0_337:FindFirstChild("HumanoidRootPart")
+        local r2_337 = r143_0.Character
+        local r3_337 = r2_337 and r2_337:FindFirstChild("HumanoidRootPart")
+        if not r1_337 or not r3_337 then
+          r150_0.orbit = false
+          return 
+        end
+        r0_336 = r0_336 + r1_336
+        r1_337.CFrame = CFrame.new(r3_337.Position) * CFrame.Angles(0, math.rad(r0_336), 0) * CFrame.new(r2_336, 0, 0)
+      end)
+      r146_0 = r139_0.RenderStepped:Connect(function()
+        -- line: [0, 0] id: 338
+        if not r150_0.orbit or not r143_0 or not r143_0.Parent then
+          if r145_0 then
+            r145_0:Disconnect()
+            r145_0 = nil
+          end
+          if r146_0 then
+            r146_0:Disconnect()
+            r146_0 = nil
+          end
+          return 
+        end
+        local r0_338 = r140_0.Character
+        local r1_338 = r0_338 and r0_338:FindFirstChild("HumanoidRootPart")
+        local r2_338 = r143_0.Character
+        local r3_338 = r2_338 and r2_338:FindFirstChild("HumanoidRootPart")
+        if not r1_338 or not r3_338 then
+          r150_0.orbit = false
+          return 
+        end
+        r1_338.CFrame = CFrame.new(r1_338.Position, r3_338.Position)
+      end)
+    end)
+  end,
+}
+r4_0.Fling:[r158_0](r158_0)
+r158_0 = "Toggle"
+r158_0 = {
+  Title = "Notify On Death",
+  Value = r150_0.notifyOnDeath,
+  Callback = function(r0_168)
+    -- line: [0, 0] id: 168
+    r150_0.notifyOnDeath = r0_168
+    r154_0()
+  end,
+}
+r4_0.Fling:[r158_0](r158_0)
+r138_0.PlayerRemoving:Connect(function(r0_32)
+  -- line: [0, 0] id: 32
+  if r143_0 and r0_32 == r143_0 then
+    r151_0("VexonHub", r0_32.DisplayName .. " left the game")
+    r143_0 = nil
+    for r4_32, r5_32 in pairs(r150_0) do
+      r150_0[r4_32] = false
+    end
+  end
+  removeEspForPlayer(r0_32)
+end)
+r4_0.Fling:Section({
+  Title = "Fling",
+  Icon = "utensils",
+})
+local r156_0 = false
+local r157_0 = game.Players.LocalPlayer
+r158_0 = game:GetService("RunService")
+local r159_0 = false
+local r162_0 = "Toggle"
+r162_0 = {
+  Title = "Fling Aura",
+  Value = false,
+  Callback = function(r0_284)
+    -- line: [0, 0] id: 284
+    r159_0 = r0_284
+    if r0_284 then
+      task.spawn(function()
+        -- line: [0, 0] id: 285
+        while r159_0 do
+          local r0_285 = r157_0.Character
+          if r0_285 then
+            r0_285 = r157_0.Character:FindFirstChild("HumanoidRootPart")
+            if r0_285 then
+              r0_285 = pairs
+              for r3_285, r4_285 in r0_285(game.Players:GetPlayers()) do
+                if r4_285 ~= r157_0 and r4_285.Character and r4_285.Character:FindFirstChild("HumanoidRootPart") and (r157_0.Character.HumanoidRootPart.Position - r4_285.Character.HumanoidRootPart.Position).Magnitude <= 15 then
+                  pcall(function()
+                    -- line: [0, 0] id: 286
+                    miniFling(r4_285)
+                  end)
+                end
+                -- close: r3_285
+              end
+            end
+          end
+          task.wait(0.5)
+        end
+      end)
+    end
+  end,
+}
+r4_0.Fling:[r162_0](r162_0)
+r157_0.CharacterAdded:Connect(function()
+  -- line: [0, 0] id: 85
+  r159_0 = false
+end)
+local r160_0 = game:GetService("Players")
+local r161_0 = game:GetService("UserInputService")
+r162_0 = r160_0.LocalPlayer
+local r163_0 = r162_0:GetMouse()
+local r164_0 = workspace.CurrentCamera
+local r165_0 = false
+local r168_0 = "Toggle"
+r168_0 = {
+  Title = "Click Fling",
+  Value = false,
+  Callback = function(r0_118)
+    -- line: [0, 0] id: 118
+    r165_0 = r0_118
+    if not r0_118 then
+    end
+  end,
+}
+r4_0.Fling:[r168_0](r168_0)
+local function r166_0(r0_52)
+  -- line: [0, 0] id: 52
+  if r0_52 and r0_52.Parent and r0_52.Parent:IsA("Model") then
+    local r1_52 = r160_0
+    local r3_52 = r0_52.Parent
+    ... = r1_52:GetPlayerFromCharacter(r3_52) -- error: untaken top expr
+  end
+end
+r163_0.Button1Down:Connect(function()
+  -- line: [0, 0] id: 140
+  if not r165_0 then
+    return 
+  end
+  local r0_140 = r166_0(r163_0.Target)
+  if r0_140 and r0_140 ~= r162_0 then
+    miniFling(r0_140)
+  end
+end)
+r161_0.TouchTap:Connect(function(r0_35, r1_35)
+  -- line: [0, 0] id: 35
+  if not r165_0 or r1_35 then
+    return 
+  end
+  local r2_35 = r0_35[1]
+  local r3_35 = r164_0.CFrame.Position
+  local r4_35 = r164_0:ViewportPointToRay(r2_35.X, r2_35.Y).Direction * 500
+  local r5_35 = RaycastParams.new()
+  r5_35.FilterDescendantsInstances = {
+    r162_0.Character
+  }
+  r5_35.FilterType = Enum.RaycastFilterType.Blacklist
+  local r6_35 = workspace:Raycast(r3_35, r4_35, r5_35)
+  local r7_35 = r166_0(r6_35 and r6_35.Instance)
+  if r7_35 and r7_35 ~= r162_0 then
+    miniFling(r7_35)
+  end
+end)
+local r167_0 = false
+r168_0 = game:GetService("Players")
+local r169_0 = r168_0.LocalPlayer
+local r170_0 = r169_0.Character or r169_0.CharacterAdded:Wait()
+local r173_0 = "FindFirstChild"
+r173_0 = "HumanoidRootPart"
+local r171_0 = r170_0:[r173_0](r173_0)
+local r172_0 = r171_0 and r171_0.CFrame
+local r175_0 = "Toggle"
+r175_0 = {
+  Title = "Fling All (Buggy?)",
+  Value = false,
+  Callback = function(r0_138)
+    -- line: [0, 0] id: 138
+    r167_0 = r0_138
+    if r0_138 then
+      task.spawn(function()
+        -- line: [0, 0] id: 139
+        while r167_0 do
+          local r0_139 = pairs
+          for r3_139, r4_139 in r0_139(r168_0:GetPlayers()) do
+            if r4_139 ~= r169_0 then
+              miniFling(r4_139)
+            end
+          end
+          task.wait(0.5)
+        end
+      end)
+    elseif r172_0 and r171_0 then
+      r171_0.CFrame = r172_0
+    end
+  end,
+}
+r4_0.Fling:[r175_0](r175_0)
+r173_0 = game.Players.LocalPlayer
+local r174_0 = game:GetService("UserInputService")
+r175_0 = false
+local r176_0 = false
+local r177_0 = nil
+local r178_0 = game:GetService("ReplicatedStorage")
+local r180_0 = "FindFirstChild"
+r180_0 = "juisdfj0i32i0eidsuf0iok"
+if r178_0:[r180_0](r180_0) then
+  r176_0 = false
+else
+  r176_0 = false
+  r177_0 = Instance.new("Decal")
+  r177_0.Name = "juisdfj0i32i0eidsuf0iok"
+  r177_0.Parent = game:GetService("ReplicatedStorage")
+end
+function r178_0()
+  -- line: [0, 0] id: 263
+  local r3_263 = 0.1
+  while r176_0 do
+    game:GetService("RunService").Heartbeat:Wait()
+    local r4_263 = game.Players.LocalPlayer
+    while true do
+      local r0_263 = nil	-- notice: implicit variable refs by block#[6, 7, 13, 15, 16, 17, 20, 21, 22]
+      local r1_263 = nil	-- notice: implicit variable refs by block#[4, 5, 13, 14, 18, 19]
+      if r176_0 then
+        if r1_263 then
+          local r5_263 = r1_263.Parent
+          if r5_263 and r0_263 then
+            r5_263 = r0_263.Parent
+            if not r5_263 then
+              ::label_27::
+              game:GetService("RunService").Heartbeat:Wait()
+              r1_263 = r4_263.Character
+              r5_263 = r1_263:FindFirstChild("HumanoidRootPart")
+              r0_263 = r5_263
+              if r0_263 then
+                r5_263 = r1_263:FindFirstChild("Torso")
+                r0_263 = r5_263
+                if r0_263 then
+                  r5_263 = r1_263:FindFirstChild("UpperTorso")
+                  r0_263 = r5_263
+                end
+              end
+            else
+              break
+            end
+          end
+        else
+          goto label_27	-- block#8 is visited secondly
+        end
+      else
+        break
+      end
+    end
+    if r176_0 then
+      local r2_263 = r0_263.Velocity
+      r0_263.Velocity = r2_263 * 10000 + Vector3.new(0, 10000, 0)
+      game:GetService("RunService").RenderStepped:Wait()
+      if r1_263 and r1_263.Parent and r0_263 and r0_263.Parent then
+        r0_263.Velocity = r2_263
+      end
+      game:GetService("RunService").Stepped:Wait()
+      if r1_263 and r1_263.Parent and r0_263 and r0_263.Parent then
+        r0_263.Velocity = r2_263 + Vector3.new(0, r3_263, 0)
+        r3_263 = r3_263 * -1
+      end
+    end
+  end
+end
+local r181_0 = "Toggle"
+r181_0 = {
+  Title = "Touch Fling",
+  Value = false,
+  Callback = function(r0_282)
+    -- line: [0, 0] id: 282
+    if r0_282 then
+      r176_0 = true
+      coroutine.wrap(r178_0)()
+    else
+      r176_0 = false
+    end
+  end,
+}
+r4_0.Fling:[r181_0](r181_0)
+local r179_0 = false
+r180_0 = {}
+function r181_0(r0_82)
+  -- line: [0, 0] id: 82
+  if r179_0 and r0_82.Character then
+    for r4_82, r5_82 in pairs(r0_82.Character:GetDescendants()) do
+      if r5_82:IsA("BasePart") and r5_82.CanCollide then
+        r5_82.CanCollide = false
+      end
+    end
+  end
+end
+local function r182_0()
+  -- line: [0, 0] id: 73
+  for r3_73, r4_73 in pairs(game.Players:GetPlayers()) do
+    if r4_73 ~= game.Players.LocalPlayer and r4_73.Character then
+      for r8_73, r9_73 in pairs(r4_73.Character:GetDescendants()) do
+        if r9_73:IsA("BasePart") then
+          r9_73.CanCollide = true
+        end
+      end
+    end
+  end
+end
+local function r183_0()
+  -- line: [0, 0] id: 220
+  for r3_220, r4_220 in pairs(game.Players:GetPlayers()) do
+    if r4_220 ~= game.Players.LocalPlayer then
+      table.insert(r180_0, game:GetService("RunService").Stepped:Connect(function()
+        -- line: [0, 0] id: 223
+        r181_0(r4_220)
+      end))
+    end
+    -- close: r3_220
+  end
+  game.Players.PlayerAdded:Connect(function(r0_221)
+    -- line: [0, 0] id: 221
+    if r0_221 ~= game.Players.LocalPlayer then
+      table.insert(r180_0, game:GetService("RunService").Stepped:Connect(function()
+        -- line: [0, 0] id: 222
+        r181_0(r0_221)
+      end))
+    end
+  end)
+end
+local function r184_0()
+  -- line: [0, 0] id: 340
+  for r3_340, r4_340 in pairs(r180_0) do
+    r4_340:Disconnect()
+  end
+  table.clear(r180_0)
+  r182_0()
+end
+local r187_0 = "Toggle"
+r187_0 = {
+  Title = "Anti Fling",
+  Value = false,
+  Callback = function(r0_292)
+    -- line: [0, 0] id: 292
+    r179_0 = r0_292
+    if r0_292 then
+      r183_0()
+    else
+      r184_0()
+    end
+  end,
+}
+r4_0.Fling:[r187_0](r187_0)
+local r185_0 = false
+local r186_0 = nil
+r187_0 = 1000
+local r188_0 = game:GetService("ReplicatedStorage")
+local r190_0 = "FindFirstChild"
+r190_0 = "juisdfj0i32i0eidsuf0iok"
+if r188_0:[r190_0](r190_0) then
+  r185_0 = false
+else
+  r185_0 = false
+  r186_0 = Instance.new("Decal")
+  r186_0.Name = "juisdfj0i32i0eidsuf0iok"
+  r186_0.Parent = game:GetService("ReplicatedStorage")
+end
+function r188_0()
+  -- line: [0, 0] id: 45
+  local r3_45 = 0.1
+  while r185_0 do
+    game:GetService("RunService").Heartbeat:Wait()
+    local r4_45 = game.Players.LocalPlayer
+    while true do
+      local r0_45 = nil	-- notice: implicit variable refs by block#[6, 7, 13, 15, 16, 17, 20, 21, 22]
+      local r1_45 = nil	-- notice: implicit variable refs by block#[4, 5, 13, 14, 18, 19]
+      if r185_0 then
+        if r1_45 then
+          local r5_45 = r1_45.Parent
+          if r5_45 and r0_45 then
+            r5_45 = r0_45.Parent
+            if not r5_45 then
+              ::label_27::
+              game:GetService("RunService").Heartbeat:Wait()
+              r1_45 = r4_45.Character
+              r5_45 = r1_45:FindFirstChild("HumanoidRootPart")
+              r0_45 = r5_45
+              if r0_45 then
+                r5_45 = r1_45:FindFirstChild("Torso")
+                r0_45 = r5_45
+                if r0_45 then
+                  r5_45 = r1_45:FindFirstChild("UpperTorso")
+                  r0_45 = r5_45
+                end
+              end
+            else
+              break
+            end
+          end
+        else
+          goto label_27	-- block#8 is visited secondly
+        end
+      else
+        break
+      end
+    end
+    if r185_0 then
+      local r2_45 = r0_45.Velocity
+      r0_45.Velocity = r2_45 * r187_0 + Vector3.new(0, 100, 0)
+      game:GetService("RunService").RenderStepped:Wait()
+      if r1_45 and r1_45.Parent and r0_45 and r0_45.Parent then
+        r0_45.Velocity = r2_45
+      end
+      game:GetService("RunService").Stepped:Wait()
+      if r1_45 and r1_45.Parent and r0_45 and r0_45.Parent then
+        r0_45.Velocity = r2_45 + Vector3.new(0, r3_45, 0)
+        r3_45 = r3_45 * -1
+      end
+    end
+  end
+end
+local r191_0 = "Toggle"
+r191_0 = {
+  Title = "Costum Touch Fling Power",
+  Value = false,
+  Callback = function(r0_15)
+    -- line: [0, 0] id: 15
+    if r0_15 then
+      r185_0 = true
+      coroutine.wrap(r188_0)()
+    else
+      r185_0 = false
+    end
+  end,
+}
+r4_0.Fling:[r191_0](r191_0)
+r191_0 = "Slider"
+r191_0 = {
+  Title = "Fling Power Value",
+  Value = {
+    Min = 1,
+    Max = 10000,
+    Default = 100,
+  },
+  Callback = function(r0_332)
+    -- line: [0, 0] id: 332
+    r187_0 = r0_332
+  end,
+}
+r4_0.Fling:[r191_0](r191_0)
+r4_0.Place:Button({
+  Title = "Copy Discord Link (join for more info)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 56
+    setclipboard("https://discord.gg/mdJKdwbKjE")
+  end,
+})
+r4_0.Place:Section({
+  Title = "TP Stuff",
+  Icon = "eye",
+})
+r4_0.Place:Button({
+  Title = "Teleport Panel",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 19
+    loadstring(game:HttpGet("https://pastefy.app/uiTL0dfO/raw"))()
+  end,
+})
+r4_0.Place:Button({
+  Title = "TP Frozen Lock",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 149
+    loadstring(game:HttpGet("https://pastefy.app/yxXqDjA2/raw"))()
+  end,
+})
+r4_0.Place:Button({
+  Title = "TP Dummy",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 72
+    loadstring(game:HttpGet("https://pastefy.app/oJwPZY4a/raw"))()
+  end,
+})
+r4_0.Place:Section({
+  Title = "Teleport Places",
+  Icon = "map",
+})
+for r193_0, r194_0 in ipairs({
+  {
+    "Middle Of Map",
+    139,
+    440,
+    32
+  },
+  {
+    "Prison",
+    438,
+    439,
+    -376
+  },
+  {
+    "Montain",
+    155,
+    628,
+    -447
+  },
+  {
+    "Door 1",
+    17,
+    440,
+    -301
+  },
+  {
+    "Door 2",
+    290,
+    440,
+    361
+  },
+  {
+    "Corner 1",
+    29,
+    442,
+    488
+  },
+  {
+    "Corner 2",
+    -261,
+    442,
+    -248
+  },
+  {
+    "Corner 3",
+    263,
+    442,
+    -456
+  },
+  {
+    "Corner 4",
+    566,
+    442,
+    274
+  },
+  {
+    "Counter",
+    -68,
+    29,
+    20346
+  },
+  {
+    "Counter Up",
+    -78,
+    84,
+    20354
+  },
+  {
+    "Atomic Base",
+    1063,
+    30,
+    23006
+  },
+  {
+    "Atomic Base Up",
+    1063,
+    405,
+    23006
+  },
+  {
+    "Atomic Slash",
+    1063,
+    131,
+    23006
+  },
+  {
+    "Atomic Slash Up",
+    1063,
+    190,
+    23006
+  },
+  {
+    "Little SafeZone",
+    150,
+    505,
+    30
+  },
+  {
+    "Big SafeZone",
+    150,
+    705,
+    30
+  },
+  {
+    "Void",
+    150,
+    -495,
+    30
+  },
+  {
+    "Darkness",
+    0,
+    900000000005,
+    0
+  },
+  {
+    "Smoke",
+    0,
+    -1,
+    0
+  },
+  {
+    "Pixel",
+    30000000,
+    30000000,
+    30000000
+  },
+  nil
+}) do
+  local r197_0 = {
+    Title = r194_0[1],
+    Locked = false,
+  }
+  local function r198_0()
+    -- line: [0, 0] id: 135
+    local r0_135 = game.Players.LocalPlayer
+    if r0_135.Character and r0_135.Character:FindFirstChild("HumanoidRootPart") then
+      r0_135.Character.HumanoidRootPart.CFrame = CFrame.new(r194_0[2], r194_0[3], r194_0[4])
+    end
+  end
+  r197_0.Callback = r198_0
+  r4_0.Place:Button(r197_0)
+  -- close: r193_0
+end
+r4_0.Moveset:Button({
+  Title = "Copy Discord Link (join for more info)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 207
+    setclipboard("https://discord.gg/mdJKdwbKjE")
+  end,
+})
+r4_0.Moveset:Section({
+  Title = "Characther Movesets",
+  Icon = "box",
+})
+r4_0.Moveset:Button({
+  Title = "The Garbage Ghost (Universal)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 44
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/DiosDi/VexonHub/refs/heads/main/TheGarbageGhost"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Trash-Can Man (Universal)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 252
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/yes1nt/yes/refs/heads/main/Trashcan%20Man", true))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "StarGlicher (Universal)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 262
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Reapvitalized/TSB/refs/heads/main/SG_DEMO.lua"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "JK (Saitama)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 83
+    loadstring(game:HttpGet("https://rawscripts.net/raw/The-Strongest-Battlegrounds-JK-Moveset-24889"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Kenjihin (Saitama)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 104
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kenjihin69/Kenjihin69/refs/heads/main/Tp%20exploit%20saitama%20to%20jun"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Gojo 1 (Saitama)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 186
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Nova2ezz/jjs-gojo-/refs/heads/main/SaitamaToGojoV3_SOURCE-obfuscated_2.txt"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Gojo 2 (Saitama)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 330
+    getgenv().morph = true
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletfan2007/BaldyToSorcerer/refs/heads/main/LatestV2.lua"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Gojo 3 (Saitama)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 46
+    loadstring(game:HttpGet("https://pastebin.com/raw/3Cz8kF8M", true))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Mahito (Saitama)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 302
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dendendenver1/mahitotsbthing/refs/heads/main/main.lua"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Yuji/Sukuna (Saitama)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 71
+    loadstring(game:HttpGet("https://pastebin.com/raw/1yaXL0rA"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Ichigo Kurosaki (Saitama)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 177
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/grest0n/CustomMovesets/refs/heads/main/Ichigo%20Kurosaki"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "JJS Gojo (Saitama)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 293
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/JcBoomin/a63e9ac3e90cef03ecf37e997fd21632/raw/98b567b81f61bb30042e0078b78f3fb24685fb8d/Gojo", true))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Hakari (Saitama)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 260
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dendendenver1/HakariTSB/refs/heads/main/HakariTSB.lua"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Arcaura (Garou)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 145
+    getgenv().OptimizeUltimate = false
+    getgenv().ReduceUltFlash = true
+    getgenv().Move1Insta = false
+    getgenv().LowQualityMode = true
+    getgenv().BetaConsole = true
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Reapvitalized/TSB/refs/heads/main/ARCAURA.lua"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "KJ (Garou)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 101
+    loadstring(game:HttpGet("https://rawscripts.net/raw/KJ-The-Strongest-Battlegrounds-Garou-to-kj-27085"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Chainsaw Man (Garou)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 233
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/GoldenHeads2/0fd8d36993c850f3fac89e5adf793076/raw/ab4f5a42bd0b2e24a32a46301d533ea849ca771c/gistfile1.txt"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Okarun (Garou)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 75
+    loadstring(game:HttpGet("https://rawscripts.net/raw/The-Strongest-Battlegrounds-Garou-to-OKARUN-24065"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Sukuna (Garou)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 300
+    loadstring(game:HttpGet("https://rawscripts.net/raw/The-Strongest-Battlegrounds-Garou-to-Sukuna-24081"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Gojo (Garou)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 22
+    loadstring(game:HttpGet("https://pastebin.com/raw/3Cz8kF8M", true))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Cyber Psycho (Garou)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 13
+    loadstring(game:HttpGet("https://pastebin.com/raw/7V1mUBtQ"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Suriyu (Garou)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 317
+    loadstring(game:HttpGet("https://rawscripts.net/raw/he-Strongest-Battlegrounds-Garou-to-Suiryu-script-18098"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Goku V2 (Garou)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 243
+    loadstring(game:HttpGet("https://rawscripts.net/raw/The-Strongest-Battlegrounds-Goku-Moveset-V2-17977"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Minos Prime (Garou)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 261
+    _G.SkipIntro = true
+    _G.Night = false
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/S1gmaGuy/MinosPrimeFixed/refs/heads/main/ThefixIsSoSigma"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Toji (Atomic Samurai)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 184
+    loadstring(game:HttpGet("https://rawscripts.net/raw/The-Strongest-Battlegrounds-Toji-moveset-for-Atomic-Samurai-22498"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Toji 2 (Atomic Samurai)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 1
+    loadstring(game:HttpGet("https://paste.ee/r/0uIxM"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Sukuna (Atomic Samurai)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 329
+    loadstring(game:HttpGet("https://pastebin.com/raw/gUrBYsGK"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Toji (Sonic)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 173
+    loadstring(game:HttpGet("https://rawscripts.net/raw/The-Strongest-Battlegrounds-Toji-moveset-21449"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "Voltra (Sonic)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 36
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Reapvitalized/TSB/refs/heads/main/VOLTA.lua"))()
+  end,
+})
+r4_0.Moveset:Button({
+  Title = "APOPHENIA (Metal Bat)",
+  Locked = false,
+  Callback = function()
+    -- line: [0, 0] id: 84
+    getgenv().Music = false
+    getgenv().AttackQuality = "High"
+    getgenv().ConstantSpeed = false
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Reapvitalized/TSB/main/APOPHENIA.lua"))()
+  end,
+})
+Info = r4_0.Info
+if not ui then
+  ui = {}
+end
+if not ui.Creator then
+  ui.Creator = {}
+end
+function ui.Creator.Request(r0_108)
+  -- line: [0, 0] id: 108
+  local r1_108 = game:GetService("HttpService")
+  local r2_108, r3_108 = pcall(function()
+    -- line: [0, 0] id: 109
+    if r1_108.RequestAsync then
+      local r0_109 = r1_108
+      local r2_109 = {
+        Url = r0_108.Url,
+        Method = r0_108.Method or "GET",
+        Headers = r0_108.Headers or {},
+      }
+      r0_109 = r0_109:RequestAsync(r2_109)
+      return {
+        Body = r0_109.Body,
+        StatusCode = r0_109.StatusCode,
+        Success = r0_109.Success,
+      }
+    end
+    return {
+      Body = r1_108:GetAsync(r0_108.Url),
+      StatusCode = 200,
+      Success = true,
+    }
+  end)
+  if r2_108 then
+    return r3_108
+  end
+  error("HTTP Request failed: " .. tostring(r3_108))
+end
+r190_0 = "mdJKdwbKjE"
+r191_0 = "https://discord.com/api/v10/invites/" .. r190_0 .. "?with_counts=true&with_expiration=true"
+(function()
+  -- line: [0, 0] id: 294
+  local r0_294, r1_294 = pcall(function()
+    -- line: [0, 0] id: 295
+    return game:GetService("HttpService"):JSONDecode(ui.Creator.Request({
+      Url = r191_0,
+      Method = "GET",
+      Headers = {
+        ["User-Agent"] = "RobloxBot/1.0",
+        Accept = "application/json",
+      },
+    }).Body)
+  end)
+  local r2_294 = nil	-- notice: implicit variable refs by block#[4]
+  if r0_294 and r1_294 then
+    r2_294 = r1_294.guild
+    if r2_294 then
+      r2_294 = Info:Paragraph({
+        Title = r1_294.guild.name,
+        Desc = " <font color=\"#52525b\">â—</font> Member Count : " .. tostring(r1_294.approximate_member_count) .. "\n <font color=\"#16a34a\">â—</font> Online Count : " .. tostring(r1_294.approximate_presence_count),
+        Image = "https://cdn.discordapp.com/icons/" .. r1_294.guild.id .. "/" .. r1_294.guild.icon .. ".png?size=1024",
+        ImageSize = 42,
+      })
+      Info:Button({
+        Title = "Update Info",
+        Callback = function()
+          -- line: [0, 0] id: 296
+          local r0_296, r1_296 = pcall(function()
+            -- line: [0, 0] id: 297
+            return game:GetService("HttpService"):JSONDecode(ui.Creator.Request({
+              Url = r191_0,
+              Method = "GET",
+            }).Body)
+          end)
+          if r0_296 and r1_296 and r1_296.guild then
+            r2_294:SetDesc(" <font color=\"#52525b\">â—</font> Member Count : " .. tostring(r1_296.approximate_member_count) .. "\n <font color=\"#16a34a\">â—</font> Online Count : " .. tostring(r1_296.approximate_presence_count))
+            r0_0:Notify({
+              Title = "Discord Info Updated",
+              Content = "Successfully refreshed Discord statistics",
+              Duration = 2,
+              Icon = "refresh-cw",
+            })
+          else
+            r0_0:Notify({
+              Title = "Update Failed",
+              Content = "Could not refresh Discord info",
+              Duration = 3,
+              Icon = "alert-triangle",
+            })
+          end
+        end,
+      })
+      Info:Button({
+        Title = "Copy Discord Invite",
+        Callback = function()
+          -- line: [0, 0] id: 298
+          setclipboard("https://discord.gg/" .. r190_0)
+          r0_0:Notify({
+            Title = "Copied!",
+            Content = "Discord invite copied to clipboard",
+            Duration = 2,
+            Icon = "clipboard-check",
+          })
+        end,
+      })
+      -- close: r2_294
+    end
+  else
+    r2_294 = Info
+    r2_294:Paragraph({
+      Title = "Error fetching Discord Info",
+      Desc = "Unable to load Discord information. Check your internet connection.",
+      Image = "triangle-alert",
+      ImageSize = 26,
+      Color = "Red",
+    })
+    r2_294 = print
+    r2_294("Discord API Error:", r1_294)
+  end
+end)()
+Info:Divider()
+Info:Section({
+  Title = "VexonHub",
+  TextXAlignment = "Center",
+  TextSize = 17,
+})
+Info:Divider()
+local r195_0 = "Paragraph"
+r195_0 = {
+  Title = "Owner:",
+  Desc = "TheVex0n",
+  Image = "rbxassetid://84519376661277",
+  ImageSize = 30,
+  Thumbnail = "",
+  ThumbnailSize = 0,
+  Locked = false,
+}
+local r193_0 = Info:[r195_0](r195_0)
+local r194_0 = Info
+local r196_0 = "Paragraph"
+r196_0 = {
+  Title = "Discord",
+  Desc = "Join our discord for more info and stuff",
+  Image = "rbxassetid://84519376661277",
+  ImageSize = 30,
+  Thumbnail = "",
+  ThumbnailSize = 0,
+  Locked = false,
+  Buttons = {
+    {
+      Icon = "copy",
+      Title = "Copy Link",
+      Callback = function()
+        -- line: [0, 0] id: 12
+        setclipboard("https://discord.gg/mdJKdwbKjE")
+      end,
+    }
+  },
+}
+r194_0 = r194_0:[r196_0](r196_0)
